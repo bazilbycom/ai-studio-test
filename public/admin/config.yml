@@ -1,9 +1,14 @@
 backend:
   name: github
-  repo: bazilbycom/ai-studio-test
+  repo: Bycom/Bycom-Solutions-2026 # Ensure this matches your ACTUAL repo name
   branch: main
+  # ⚠️ TO FIX THE REDIRECT:
+  # Since you are not on Netlify, you need an "Auth Bridge".
+  # Use a proxy service like: https://github.com/vencax/netlify-cms-github-oauth-provider
+  # And set it here:
+  # base_url: https://your-auth-bridge.com
 
-local_backend: true # Important for local testing
+local_backend: true # Run 'npx decap-server' locally to edit without auth
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

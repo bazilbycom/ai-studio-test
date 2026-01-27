@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -9,7 +8,7 @@ const Logo: React.FC<{ className?: string }> = ({ className = "h-10" }) => (
     className={`flex items-center cursor-pointer ${className}`}
   >
     <img 
-      src="https://bycomsolutions.com/wp-content/uploads/2026/01/Asset-1@300x.png" 
+      src="https://cdn.bycomsolutions.com/BS/Asset 1@300x.png" 
       alt="Bycom Solutions" 
       className="h-full w-auto object-contain brightness-0 invert"
     />

@@ -9,37 +9,20 @@
     <!-- PWA / Manifest -->
     <link rel="manifest" href="/metadata.json">
     <meta name="theme-color" content="#10b981">
-    <link rel="icon" type="image/png" href="https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png">
-    <link rel="apple-touch-icon" href="https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png">
+    <link rel="icon" type="image/png" href="https://cdn.bycomsolutions.com/BS/Asset 15@300x.png">
+    <link rel="apple-touch-icon" href="https://cdn.bycomsolutions.com/BS/Asset 15@300x.png">
     
-    <!-- OneSignal SDK -->
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-    <script>
-      window.OneSignal = window.OneSignal || [];
-      OneSignal.push(function() {
-        OneSignal.init({
-          appId: "4b5d2f6c-8e4a-4d2b-9c3a-1a2b3c4d5e6f",
-          safari_web_id: "web.onesignal.auto.simulated",
-          notifyButton: { enable: true },
-        });
-      });
-    </script>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BYCOM2026"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-BYCOM2026');
-    </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --emerald: #10b981;
+            --indigo: #312e81;
+            --violet: #4c1d95;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #030303;
+            background-color: #020202;
             color: #ffffff;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -47,42 +30,55 @@
         h1, h2, h3, h4, .font-heading {
             font-family: 'Space Grotesk', sans-serif;
         }
-        .bg-mesh {
-            background-image: 
-              radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.1) 0, transparent 40%),
-              radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0, transparent 40%),
-              radial-gradient(at 50% 50%, rgba(5, 5, 5, 1) 0, transparent 100%);
+        /* Quantum Aurora Background */
+        .quantum-aurora {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(76, 29, 149, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, #020202 0%, #000 100%);
+            animation: aurora-shift 20s ease-in-out infinite alternate;
         }
-        .neural-grid {
-            background-image: radial-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 1px);
-            background-size: 30px 30px;
-            mask-image: linear-gradient(to bottom, transparent, black, transparent);
+        @keyframes aurora-shift {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1) rotate(1deg); }
+        }
+        /* Neural Mesh (Dot Grid) */
+        .neural-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background-image: radial-gradient(var(--emerald) 0.8px, transparent 0.8px);
+            background-size: 40px 40px;
+            opacity: 0.15;
+            mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+            transform: perspective(1000px) rotateX(60deg) translateY(-100px);
+            animation: mesh-float 15s linear infinite;
+        }
+        @keyframes mesh-float {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 400px; }
         }
         .glass-panel {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
         }
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-            animation: marquee 12s linear infinite;
-        }
-        @keyframes pulse-bg {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-        .animate-pulse-slow {
-            animation: pulse-bg 8s ease-in-out infinite;
-        }
-        .text-glow {
-            text-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
+            animation: marquee 15s linear infinite;
         }
         @media (max-width: 640px) {
-          h1 { font-size: 3.5rem !important; line-height: 0.9 !important; }
-          .hero-p { font-size: 1rem !important; }
+          h1 { font-size: 15vw !important; line-height: 0.85 !important; }
         }
     </style>
 <script type="importmap">
@@ -102,16 +98,10 @@
 }
 </script>
 </head>
-<body class="bg-mesh min-h-screen relative">
-    <div class="fixed inset-0 neural-grid pointer-events-none opacity-20"></div>
+<body class="min-h-screen relative">
+    <div class="quantum-aurora"></div>
+    <div class="neural-mesh"></div>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(err => console.log('PWA Error:', err));
-        });
-      }
-    </script>
 </body>
 </html>

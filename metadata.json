@@ -14,13 +14,13 @@
   ],
   "icons": [
     {
-      "src": "https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png",
+      "src": "https://cdn.bycomsolutions.com/BS/Asset 15@300x.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png",
+      "src": "https://cdn.bycomsolutions.com/BS/Asset 15@300x.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
@@ -32,7 +32,7 @@
       "url": "/#portfolio",
       "icons": [
         {
-          "src": "https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png",
+          "src": "https://cdn.bycomsolutions.com/BS/Asset 15@300x.png",
           "sizes": "192x192"
         }
       ]
@@ -42,7 +42,7 @@
       "url": "/#blog",
       "icons": [
         {
-          "src": "https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png",
+          "src": "https://cdn.bycomsolutions.com/BS/Asset 15@300x.png",
           "sizes": "192x192"
         }
       ]
