@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Logo from './Logo';
 import { motion } from 'framer-motion';
@@ -17,7 +16,7 @@ const Footer: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-16 mb-20">
           <div>
             <Logo className="h-10 mb-10" />
-            <p className="text-zinc-500 max-w-sm mb-12 text-lg md:text-xl font-medium leading-relaxed italic">
+            <p className="text-zinc-400 max-w-sm mb-12 text-lg md:text-xl font-medium leading-relaxed italic">
               Elite Digital Engineering Hub. Engineering high-frequency ecosystems for global performers.
             </p>
             <div className="flex flex-col gap-6">
@@ -29,7 +28,7 @@ const Footer: React.FC = () => {
                     href={s.href} 
                     target="_blank" 
                     whileHover={{ scale: 1.05, color: '#10b981' }} 
-                    className="flex items-center justify-center gap-3 glass-panel border border-white/10 px-4 py-4 rounded-2xl text-zinc-400 group"
+                    className="flex items-center justify-center gap-3 glass-panel border border-white/10 px-4 py-4 rounded-2xl text-zinc-300 group"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d={s.icon}/></svg>
                     <span className="text-[9px] font-black uppercase tracking-widest">{s.name}</span>
@@ -42,7 +41,7 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
             <div>
               <h4 className="font-black uppercase tracking-[0.4em] text-[10px] text-[#10b981] mb-8">Uplinks</h4>
-              <ul className="space-y-6 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
+              <ul className="space-y-6 text-zinc-400 text-[10px] font-black uppercase tracking-widest">
                 <li><a href="https://trustpilot.com/review/bycomsolutions.com" target="_blank" className="hover:text-white transition-colors">Trustpilot</a></li>
                 <li><a href="https://google.com/search?q=bycom+solutions" target="_blank" className="hover:text-white transition-colors">Google Profile</a></li>
                 <li><a href="https://play.google.com/store/apps/dev?id=6192201139912582889" target="_blank" className="hover:text-white transition-colors">Play Store</a></li>
@@ -51,7 +50,7 @@ const Footer: React.FC = () => {
             </div>
             <div>
               <h4 className="font-black uppercase tracking-[0.4em] text-[10px] text-[#10b981] mb-8">Service Nodes</h4>
-              <ul className="space-y-6 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
+              <ul className="space-y-6 text-zinc-400 text-[10px] font-black uppercase tracking-widest">
                 <li><a href="#services" className="hover:text-white transition-colors">Core Arsenal</a></li>
                 <li><a href="#portfolio" className="hover:text-white transition-colors">Matrix Archive</a></li>
                 <li><a href="#blog" className="hover:text-white transition-colors">Bycom Labs</a></li>
@@ -59,7 +58,7 @@ const Footer: React.FC = () => {
             </div>
             <div>
               <h4 className="font-black uppercase tracking-[0.4em] text-[10px] text-[#10b981] mb-8">Legal Docs</h4>
-              <ul className="space-y-6 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
+              <ul className="space-y-6 text-zinc-400 text-[10px] font-black uppercase tracking-widest">
                 <li><a href="#privacy" className="hover:text-white transition-colors">Privacy</a></li>
                 <li><a href="#terms" className="hover:text-white transition-colors">Engagement</a></li>
                 <li><a href="#refunds" className="hover:text-white transition-colors">Refunds</a></li>
@@ -69,33 +68,35 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 py-12 border-t border-white/5">
-          <motion.div whileHover={{ y: -5 }} className="p-10 rounded-[2.5rem] glass-panel border border-white/5 relative group overflow-hidden bg-gradient-to-br from-[#10b981]/10 to-transparent">
+          <motion.div whileHover={{ y: -5 }} className="p-10 rounded-[2.5rem] glass-panel border border-white/10 relative group overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent">
             <div className="absolute top-0 right-0 p-8 text-6xl font-black text-white/[0.03] select-none">NODE IN</div>
             <div className="relative z-10">
               <span className="text-[9px] font-black uppercase tracking-widest text-[#10b981] mb-4 block">Regional Hub / India</span>
               <p className="font-black text-2xl text-white mb-2 tracking-tight">Bantwal Chambers</p>
               <p className="text-zinc-500 font-bold italic text-sm tracking-tight mb-6">Mangalore, KA 575011</p>
               <div className="flex items-center gap-4">
-                 <div className="px-6 py-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] font-black text-[#10b981] shadow-inner tracking-widest">+91 72598 30339</div>
+                 <div className="px-6 py-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] font-black text-white shadow-inner tracking-widest">+91 72598 30339</div>
               </div>
             </div>
+            <div className="absolute left-0 bottom-0 w-full h-1 bg-[#10b981]/30"></div>
           </motion.div>
 
-          <motion.div whileHover={{ y: -5 }} className="p-10 rounded-[2.5rem] glass-panel border border-white/5 relative group overflow-hidden bg-gradient-to-br from-[#06b6d4]/10 to-transparent">
+          <motion.div whileHover={{ y: -5 }} className="p-10 rounded-[2.5rem] glass-panel border border-white/10 relative group overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent">
             <div className="absolute top-0 right-0 p-8 text-6xl font-black text-white/[0.03] select-none">NODE KSA</div>
             <div className="relative z-10">
               <span className="text-[9px] font-black uppercase tracking-widest text-[#06b6d4] mb-4 block">Regional Hub / KSA</span>
               <p className="font-black text-2xl text-white mb-2 tracking-tight">Tahliyah St, Riyadh</p>
               <p className="text-zinc-500 font-bold italic text-sm tracking-tight mb-6">Al Aqiq 13515</p>
               <div className="flex items-center gap-4">
-                 <div className="px-6 py-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] font-black text-[#06b6d4] shadow-inner tracking-widest">+966 57 527 1327</div>
+                 <div className="px-6 py-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] font-black text-white shadow-inner tracking-widest">+966 57 527 1327</div>
               </div>
             </div>
+            <div className="absolute left-0 bottom-0 w-full h-1 bg-[#06b6d4]/30"></div>
           </motion.div>
         </div>
 
         <div className="pt-12 mt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-zinc-600 text-[9px] font-black uppercase tracking-[0.5em] text-center md:text-left">
+          <p className="text-zinc-500 text-[9px] font-black uppercase tracking-[0.5em] text-center md:text-left">
             © 2026 BYCOM SOLUTIONS. BEYOND COMPUTING. REGISTERED IN INDIA & KSA.
           </p>
           <div className="flex items-center gap-3 px-6 py-2 rounded-full glass-panel border border-white/5">

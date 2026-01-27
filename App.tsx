@@ -90,47 +90,47 @@ const App: React.FC = () => {
                    initial={{ opacity: 0, scale: 0.98 }}
                    whileInView={{ opacity: 1, scale: 1 }}
                    viewport={{ once: true }}
-                   className="w-full glass-panel rounded-[2rem] md:rounded-[3rem] overflow-hidden aspect-[16/10] md:aspect-[21/8] relative border border-white/5 shadow-[0_0_80px_rgba(16,185,129,0.1)]"
+                   className="w-full glass-panel rounded-[2rem] md:rounded-[3rem] overflow-hidden aspect-[16/10] md:aspect-[21/8] relative border border-white/20 shadow-[0_0_80px_rgba(16,185,129,0.15)]"
                  >
                    <motion.img 
                      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
                      alt="Global Status" 
                      className="w-full h-full object-cover"
-                     animate={{ opacity: [0.2, 0.5, 0.2] }}
-                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                     animate={{ opacity: [0.3, 0.6, 0.3] }}
+                     transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
                    />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                    <div className="absolute inset-0 p-6 md:p-14 flex flex-col justify-end">
                      <div className="grid grid-cols-3 gap-3 md:gap-10 items-end">
                        <div className="text-left col-span-3 md:col-span-1 mb-4 md:mb-0">
                          <span className="text-[#10b981] font-black text-[8px] md:text-[9px] uppercase tracking-[0.6em] mb-2 block">Network Nodes</span>
-                         <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-none">Global Status</h3>
+                         <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-none text-white">Global Status</h3>
                          <div className="flex items-center gap-2 mt-3">
                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping"></div>
-                           <span className="text-[8px] md:text-[9px] font-black uppercase text-zinc-500 tracking-widest">Active Relay</span>
+                           <span className="text-[8px] md:text-[9px] font-black uppercase text-zinc-400 tracking-widest">Active Relay</span>
                          </div>
                        </div>
-                       <div className="text-left border-l border-white/10 pl-3 md:pl-10">
+                       <div className="text-left border-l border-white/20 pl-3 md:pl-10">
                          <span className="text-purple-400 font-black text-[8px] md:text-[9px] uppercase tracking-[0.6em] mb-2 block">Speed</span>
-                         <h3 className="text-xl md:text-4xl font-black uppercase tracking-tighter leading-none">&lt; 15ms</h3>
-                         <p className="text-zinc-500 text-[8px] md:text-[9px] font-black uppercase tracking-widest mt-1">Latency</p>
+                         <h3 className="text-xl md:text-4xl font-black uppercase tracking-tighter leading-none text-white">&lt; 15ms</h3>
+                         <p className="text-zinc-400 text-[8px] md:text-[9px] font-black uppercase tracking-widest mt-1">Latency</p>
                        </div>
-                       <div className="text-left border-l border-white/10 pl-3 md:pl-10">
+                       <div className="text-left border-l border-white/20 pl-3 md:pl-10">
                          <span className="text-cyan-400 font-black text-[8px] md:text-[9px] uppercase tracking-[0.6em] mb-2 block">Nodes</span>
-                         <h3 className="text-xl md:text-4xl font-black uppercase tracking-tighter leading-none">450+</h3>
-                         <p className="text-zinc-500 text-[8px] md:text-[9px] font-black uppercase tracking-widest mt-1">Uplinks</p>
+                         <h3 className="text-xl md:text-4xl font-black uppercase tracking-tighter leading-none text-white">450+</h3>
+                         <p className="text-zinc-400 text-[8px] md:text-[9px] font-black uppercase tracking-widest mt-1">Uplinks</p>
                        </div>
                      </div>
                    </div>
                  </motion.div>
 
-                 <div className="w-full border-y border-white/5 bg-white/[0.02] rounded-2xl py-6 md:py-10 overflow-hidden">
+                 <div className="w-full border-y border-white/10 bg-white/[0.04] rounded-2xl py-6 md:py-10 overflow-hidden">
                     <div className="flex animate-marquee whitespace-nowrap">
                       {[...Array(6)].map((_, i) => (
                         <div key={i} className="flex items-center gap-10 md:gap-24 mx-6 md:mx-20">
-                          <span className="text-lg md:text-2xl font-black text-white/10 uppercase tracking-tighter">Bycom Solutions Lab</span>
+                          <span className="text-lg md:text-2xl font-black text-white/40 uppercase tracking-tighter">Bycom Solutions Lab</span>
                           <span className="w-1.5 h-1.5 bg-[#10b981] rounded-full opacity-40"></span>
-                          <span className="text-lg md:text-2xl font-black text-white/10 uppercase tracking-tighter">Scale Beyond limits</span>
+                          <span className="text-lg md:text-2xl font-black text-white/40 uppercase tracking-tighter">Scale Beyond limits</span>
                         </div>
                       ))}
                     </div>
@@ -151,7 +151,7 @@ const App: React.FC = () => {
                 <div className="text-center mb-16 md:mb-24">
                   <span className="text-[#10b981] font-black uppercase tracking-[0.6em] text-[10px] mb-4 block">Strategic Units</span>
                   <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-tight md:leading-none whitespace-normal">
-                    Core <br className="md:hidden" /> <span className="text-white/10">Specializations</span>
+                    Core <br className="md:hidden" /> <span className="text-white/20">Specializations</span>
                   </h2>
                 </div>
 
@@ -170,7 +170,7 @@ const App: React.FC = () => {
                         {i + 1}
                       </div>
                       <h3 className="text-xl font-black uppercase tracking-tighter mb-4 text-white group-hover:text-[#10b981] transition-colors">{unit.title}</h3>
-                      <p className="text-zinc-500 text-sm leading-relaxed font-medium mb-auto">{unit.desc}</p>
+                      <p className="text-zinc-400 text-sm leading-relaxed font-medium mb-auto">{unit.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -193,35 +193,33 @@ const App: React.FC = () => {
                   <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.8]">Global <br/><span className="text-white/20">Presence</span></h1>
                   <div className="space-y-8 md:space-y-10">
                     <div className="glass-panel p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 relative group overflow-hidden">
-                      <div className="absolute top-0 right-0 p-8 text-4xl opacity-20">🇮🇳</div>
                       <div className="relative z-10">
                         <span className="text-[9px] font-black uppercase tracking-widest text-[#10b981] mb-4 block">India Node</span>
                         <p className="font-black text-xl md:text-2xl text-white mb-2">Bantwal Chambers</p>
-                        <p className="text-zinc-500 font-bold italic text-sm tracking-tight mb-6">Mangalore, KA 575011</p>
+                        <p className="text-zinc-400 font-bold italic text-sm tracking-tight mb-6">Mangalore, KA 575011</p>
                         <div className="flex items-center gap-4">
-                           <div className="px-5 py-2.5 bg-white/5 rounded-xl border border-white/10 text-[11px] font-black">+91 72598 30339</div>
+                           <div className="px-5 py-2.5 bg-white/5 rounded-xl border border-white/10 text-[11px] font-black text-white">+91 72598 30339</div>
                         </div>
                       </div>
                     </div>
                     <div className="glass-panel p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 relative group overflow-hidden">
-                      <div className="absolute top-0 right-0 p-8 text-4xl opacity-20">🇸🇦</div>
                       <div className="relative z-10">
                         <span className="text-[9px] font-black uppercase tracking-widest text-[#06b6d4] mb-4 block">KSA Node</span>
                         <p className="font-black text-xl md:text-2xl text-white mb-2">Tahliyah St, Riyadh</p>
-                        <p className="text-zinc-500 font-bold italic text-sm tracking-tight mb-6">Al Aqiq 13515</p>
+                        <p className="text-zinc-400 font-bold italic text-sm tracking-tight mb-6">Al Aqiq 13515</p>
                         <div className="flex items-center gap-4">
-                           <div className="px-5 py-2.5 bg-white/5 rounded-xl border border-white/10 text-[11px] font-black">+966 57 527 1327</div>
+                           <div className="px-5 py-2.5 bg-white/5 rounded-xl border border-white/10 text-[11px] font-black text-white">+966 57 527 1327</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="glass-panel p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border border-white/10 flex flex-col items-center justify-center text-center">
-                  <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Initiate <br/>Protocol</h3>
+                  <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-8 leading-none text-white">Project Enquiry</h3>
                   <p className="text-zinc-400 font-medium text-lg md:text-xl mb-12 max-w-sm leading-relaxed">Ready to deploy your next high-performance asset?</p>
                   <button onClick={() => setIsModalOpen(true)} className="w-full max-w-sm py-5 md:py-6 bg-[#10b981] text-black font-black uppercase tracking-[0.3em] rounded-2xl md:rounded-3xl hover:bg-white transition-all text-base md:text-xl shadow-2xl">Start Transmission</button>
                   <div className="mt-12 pt-10 border-t border-white/5 w-full">
-                    <p className="font-black text-lg md:text-xl text-zinc-500 italic">sayhello [at] bycomsolutions.com</p>
+                    <p className="font-black text-lg md:text-xl text-zinc-400 italic">sayhello [at] bycomsolutions.com</p>
                   </div>
                 </div>
               </div>

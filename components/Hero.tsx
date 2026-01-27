@@ -40,11 +40,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-[200px]" />
       </div>
 
-      <div className="max-w-screen-xl relative z-10 w-full flex flex-col items-center justify-center text-center mx-auto px-6">
+      <div className="max-w-screen-2xl relative z-10 w-full flex flex-col items-center justify-center text-center mx-auto px-4 md:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-[#10b981]/20 glass-panel mt-24 mb-10 text-[10px] md:text-[12px] font-black tracking-[0.4em] uppercase text-[#10b981]"
+          className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-[#10b981]/20 glass-panel mt-12 md:mt-0 mb-10 text-[10px] md:text-[12px] font-black tracking-[0.4em] uppercase text-[#10b981]"
         >
           <span className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_12px_#10b981]"></span>
           Engineering Peak Performance
@@ -54,14 +54,14 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(3.5rem,8.5vw,9.5rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full max-w-full mx-auto"
+          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(3rem,8vw,8.5rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full mx-auto"
         >
           <span className="md:hidden block">
             <span className="block">Build</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow py-2">Beyond</span>
             <span className="block">Limits</span>
           </span>
-          <span className="hidden md:inline-block whitespace-nowrap px-4">
+          <span className="hidden md:inline-block whitespace-nowrap">
             Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow px-2">Beyond</span> Limits
           </span>
         </motion.h1>
@@ -70,7 +70,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-[14px] sm:text-lg md:text-2xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed font-medium px-4"
+          className="text-[14px] sm:text-lg md:text-2xl text-zinc-300 mb-12 max-w-2xl mx-auto leading-relaxed font-medium px-4"
         >
           Bycom Solutions constructs <span className="text-white font-bold">ultra-performant</span> digital infrastructure and AI ecosystems for industry leaders.
         </motion.p>
@@ -108,5 +108,4 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   );
 };
 
-// Added missing default export
 export default Hero;

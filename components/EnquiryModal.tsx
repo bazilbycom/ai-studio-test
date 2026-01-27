@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -58,7 +57,7 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
 
             <div className="mb-8 text-left">
               <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-2 leading-none text-white">Project <span className="text-[#10b981]">Enquiry</span></h2>
-              <p className="text-zinc-300 font-bold text-[9px] md:text-[10px] tracking-widest uppercase opacity-70">Direct Engineering Consultation</p>
+              <p className="text-zinc-200 font-bold text-[9px] md:text-[10px] tracking-widest uppercase opacity-70">Direct Engineering Consultation</p>
             </div>
 
             <form onSubmit={handleSubmit} className={`space-y-4 md:space-y-5 ${status === 'waiting' ? 'opacity-50 pointer-events-none' : ''}`}>

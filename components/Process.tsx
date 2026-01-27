@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -39,8 +38,8 @@ const Process: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <span className="text-[#10b981] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">The Bycom Method</span>
-          <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter">Digital <span className="text-white/30">Evolution</span></h2>
+          <span className="text-[#10b981] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block text-glow">The Bycom Method</span>
+          <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white">Digital <span className="text-white/30">Evolution</span></h2>
         </motion.div>
 
         <div className="grid md:grid-cols-4 gap-8">
@@ -54,16 +53,17 @@ const Process: React.FC = () => {
               className="relative group p-8 glass-panel rounded-3xl border border-white/5 hover:border-[#10b981]/20 transition-all duration-500 overflow-hidden"
             >
               <div 
-                className="text-7xl font-black mb-6 transition-all duration-700 select-none opacity-100 md:opacity-40 md:group-hover:opacity-100"
+                className="text-7xl font-black mb-6 transition-all duration-700 select-none text-zinc-700 group-hover:opacity-100"
                 style={{ 
-                  color: step.color,
-                  textShadow: `0 0 20px ${step.color}44`
-                }}
+                  '--step-color': step.color,
+                } as any}
               >
-                {step.num}
+                <span className="group-hover:text-[var(--step-color)] transition-colors duration-500 group-hover:drop-shadow-[0_0_15px_var(--step-color)]">
+                  {step.num}
+                </span>
               </div>
               <h3 className="text-xl font-black uppercase tracking-widest mb-4 transition-colors text-white">{step.title}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed transition-colors group-hover:text-zinc-300">
+              <p className="text-zinc-400 text-sm leading-relaxed transition-colors group-hover:text-zinc-200">
                 {step.desc}
               </p>
               
