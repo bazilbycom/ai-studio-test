@@ -14,18 +14,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const portfolioClients = {
   tier1: {
-    label: "Sector Alpha / Global Platforms",
+    id: "SEC-ALPHA",
+    label: "Global Platforms",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600",
+    color: "from-[#10b981] to-[#34d399]",
     clients: ["Obcbook", "Lesalonais", "HomeMaids", "Aventura Indica", "Back Benchers", "TripAdvisor", "Little's and Big's", "Infodifesa", "Srinivas University", "House of coupons", "o2oviet.com", "Markitcafe", "Fitnessmentor.dk", "ARCI", "Poikilingo", "Clashmentor", "nishtry.com", "mobolarynetwork.com", "BridgeVIPnetwork.com", "varthaloka.com"]
   },
   tier2: {
-    label: "Sector Beta / Real Estate & Commerce",
+    id: "SEC-BETA",
+    label: "Real Estate & Commerce",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=600",
+    color: "from-[#06b6d4] to-[#22d3ee]",
     clients: ["yamunaashacity.com", "someshwarvista.com", "proplinks.co.in", "essencecarryzen.com", "dandeliadventures.co", "dandeliouting.in", "tharkistaan.xyz", "myadda.in", "maniththakur.design", "brochya", "Female Mixtapes", "Beporsam", "Bearyvarthe", "Justkudla", "Asdev mobile", "IJIM Pay Bank", "DariNews USA", "DariNews Turkey", "SwoBook", "Zegmart"]
   },
   tier3: {
-    label: "Sector Gamma / Network & Infra",
+    id: "SEC-GAMMA",
+    label: "Network & Infrastructure",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=600",
+    color: "from-[#8b5cf6] to-[#a78bfa]",
     clients: ["milleegram.com", "VajraRealities.com", "Bikerscafesalem.com", "scenolabevents.com", "UnitedVPN", "FastFree VPN", "VersaPro", "Bycom VPN", "Suraksha VPN", "Byvarsi Stickers", "insyapp.com", "connexsta.com", "groceradda", "recipetree.app", "achefacilceara", "Fepeople.com", "Datoo.xyz", "IndicaSurfSchool.com", "Oddboii", "spacefather.com"]
   }
 };
@@ -39,7 +45,6 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
-      
       if (hash.startsWith('blog/')) {
         setBlogSlug(hash.split('/')[1]);
         setServiceSlug(null);
@@ -53,7 +58,6 @@ const App: React.FC = () => {
         setServiceSlug(null);
         setActiveSection(hash);
       }
-      
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -104,36 +108,109 @@ const App: React.FC = () => {
           <motion.div key="home" {...pageTransition}>
             <Hero onOpenModal={() => setIsModalOpen(true)} />
             
-            <div className="border-y border-white/5 bg-black py-10 md:py-16 overflow-hidden">
-              <div className="flex animate-marquee whitespace-nowrap">
-                {[...Array(6)].map((_, i) => (
-                  <div key={i} className="flex items-center gap-10 md:gap-24 mx-8 md:mx-20">
-                    <span className="text-2xl md:text-5xl font-black text-white/30 uppercase tracking-tighter">Bycom Grid 2026</span>
-                    <span className="w-2.5 h-2.5 bg-[#10b981] rounded-full shadow-[0_0_12px_#10b981]"></span>
-                    <span className="text-2xl md:text-5xl font-black text-white/30 uppercase tracking-tighter">Extreme Engineering</span>
-                    <span className="w-2.5 h-2.5 bg-purple-500 rounded-full shadow-[0_0_12px_#a855f7]"></span>
+            <section className="h-screen max-h-[900px] flex flex-col items-center justify-center bg-black relative overflow-hidden py-8">
+               <div className="max-w-7xl mx-auto w-full px-6 flex flex-col gap-8 h-full justify-center">
+                 <motion.div 
+                   initial={{ opacity: 0, y: 20 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   className="w-full glass-panel rounded-[3rem] overflow-hidden aspect-[21/9] md:aspect-[21/8] relative border border-white/5 shadow-[0_0_80px_rgba(16,185,129,0.1)]"
+                 >
+                   <motion.img 
+                     src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
+                     alt="Beyond Computing Global View" 
+                     className="w-full h-full object-cover"
+                     animate={{ 
+                       filter: ["grayscale(100%) opacity(0.2)", "grayscale(0%) opacity(0.7)", "grayscale(100%) opacity(0.2)"],
+                     }}
+                     transition={{ 
+                       duration: 1.5, 
+                       repeat: Infinity, 
+                       repeatType: "reverse",
+                       ease: "easeInOut"
+                     }}
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-transparent to-transparent"></div>
+                   <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+                     <div className="grid md:grid-cols-3 gap-8 items-end">
+                       <div className="text-left">
+                         <span className="text-[#10b981] font-black text-[9px] uppercase tracking-[0.6em] mb-2 block">Engine Hubs</span>
+                         <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none">Global <br/>Nodes</h3>
+                         <div className="flex items-center gap-3 mt-3">
+                           <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></div>
+                           <span className="text-[9px] font-black uppercase text-zinc-500 tracking-widest">Neural Link: Synchronized</span>
+                         </div>
+                       </div>
+                       <div className="text-left border-l border-white/10 pl-8 hidden md:block">
+                         <span className="text-purple-400 font-black text-[9px] uppercase tracking-[0.6em] mb-2 block">Speed Protocol</span>
+                         <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none">&lt; 20ms</h3>
+                         <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mt-1">Edge Deployment Latency</p>
+                       </div>
+                       <div className="text-left border-l border-white/10 pl-8 hidden md:block">
+                         <span className="text-cyan-400 font-black text-[9px] uppercase tracking-[0.6em] mb-2 block">Legacy Apex</span>
+                         <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none">08 Years</h3>
+                         <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mt-1">Deep Engineering Mastery</p>
+                       </div>
+                     </div>
+                   </div>
+                 </motion.div>
+
+                 <div className="w-full border-y border-white/5 bg-white/5 rounded-2xl py-8 overflow-hidden">
+                    <div className="flex animate-marquee whitespace-nowrap">
+                      {[...Array(6)].map((_, i) => (
+                        <div key={i} className="flex items-center gap-10 md:gap-24 mx-8 md:mx-20">
+                          <span className="text-xl md:text-3xl font-black text-white/20 uppercase tracking-tighter">Bycom Logic Unit</span>
+                          <span className="w-2 h-2 bg-[#10b981] rounded-full shadow-[0_0_10px_#10b981]"></span>
+                          <span className="text-xl md:text-3xl font-black text-white/20 uppercase tracking-tighter">Extreme Performance</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
+               </div>
+            </section>
 
             <Services />
             <Process />
             <AIArchitect />
             
-            <section className="py-24 px-6 bg-[#080808] border-t border-white/5">
-              <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
-                <div className="max-w-xl">
-                  <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">Global <br/><span className="text-[#10b981]">Archive</span></h2>
-                  <p className="text-zinc-500 mb-10 text-lg md:text-xl font-medium leading-relaxed">Top 10 Rated Developer in the Indian App Frontier. Bycom solutions currently powers 80+ high-performers across the digital horizon.</p>
-                  <button onClick={() => window.location.hash = 'portfolio'} className="mx-auto md:mx-0 text-[#10b981] font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-3 group px-8 py-4 border border-[#10b981]/20 rounded-full hover:bg-[#10b981]/10 transition-all">
-                    Explore Matrix
-                    <span className="group-hover:translate-x-2 transition-transform">→</span>
+            {/* Condensed Global Archive Homepage Section */}
+            <section className="py-24 px-6 bg-[#080808] border-t border-white/5 relative overflow-hidden">
+              <div className="max-w-7xl mx-auto">
+                <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-8">
+                  <div className="max-w-xl">
+                    <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-4 block">Fleet Summary</span>
+                    <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-[0.8]">Global <span className="text-white/10">Archive</span></h2>
+                    <p className="text-zinc-500 text-lg font-medium max-w-sm">80+ deployments powered by Bycom. Exploring the next frontier of digital high-performance.</p>
+                  </div>
+                  <button onClick={() => window.location.hash = 'portfolio'} className="group px-8 py-4 bg-white/5 border border-white/10 rounded-2xl flex items-center gap-4 hover:bg-white hover:text-black transition-all">
+                    <span className="text-[10px] font-black uppercase tracking-widest">Explore Full Matrix</span>
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </button>
                 </div>
-                <div className="flex gap-3 flex-wrap justify-center md:justify-end max-w-lg">
-                  {["SaaS", "Fintech", "Health", "Web3", "Real Estate", "Ecommerce"].map(tag => (
-                     <div key={tag} className="px-5 py-2.5 glass-panel rounded-full border border-white/5 text-[10px] md:text-xs font-black uppercase tracking-widest">{tag}</div>
+
+                <div className="grid md:grid-cols-3 gap-6">
+                  {Object.entries(portfolioClients).map(([key, data]) => (
+                    <motion.div 
+                      key={key}
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      className={`glass-panel p-1 rounded-[2.5rem] bg-gradient-to-br ${data.color} opacity-90 group relative overflow-hidden h-48`}
+                    >
+                      <div className="bg-black w-full h-full rounded-[2.4rem] p-8 flex flex-col justify-between relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                           <div className="text-6xl font-black text-white">{data.id.split('-')[1]}</div>
+                        </div>
+                        <div>
+                          <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Sector Alpha-01</span>
+                          <h3 className="text-xl font-black uppercase tracking-tighter text-white">{data.label}</h3>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-bold text-zinc-400 italic">{data.clients.length} Active Nodes</span>
+                          <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -153,77 +230,74 @@ const App: React.FC = () => {
         );
       case 'portfolio':
         return (
-          <motion.div key="portfolio" {...pageTransition} className="pt-32 pb-24 px-6">
-            <div className="max-w-7xl mx-auto text-center md:text-left">
-              <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-6 block">Archive Access</span>
-              <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-20 leading-[0.8]">Global <br/><span className="text-white/20">Archive</span></h1>
-              <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-                {[
-                  { key: 'tier1', color: '#10b981' },
-                  { key: 'tier2', color: '#06b6d4' },
-                  { key: 'tier3', color: '#8b5cf6' }
-                ].map((tier, gIdx) => {
-                  const data = (portfolioClients as any)[tier.key];
-                  return (
-                    <div key={gIdx} className="space-y-6">
-                      <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden glass-panel border border-white/10 group shadow-2xl">
-                        <img src={data.image} alt={data.label} className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        <div className="absolute bottom-8 left-8 text-left">
-                           <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#10b981]">{data.label}</p>
+          <motion.div key="portfolio" {...pageTransition} className="pt-40 pb-24 px-6">
+            <div className="max-w-7xl mx-auto">
+               <div className="text-center mb-20">
+                 <span className="text-[#10b981] font-black uppercase tracking-[0.6em] text-[10px] mb-6 block">Deployment Matrix</span>
+                 <h1 className="text-7xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-4">Complete <br/><span className="text-white/20">Archive</span></h1>
+               </div>
+               
+               <div className="grid md:grid-cols-3 gap-8">
+                  {Object.entries(portfolioClients).map(([key, data]) => (
+                    <motion.div 
+                      key={key}
+                      className="glass-panel rounded-[2.5rem] border border-white/5 overflow-hidden flex flex-col h-[700px] relative"
+                    >
+                      <div className="relative h-44 flex-shrink-0">
+                        <img src={data.image} alt={data.label} className="w-full h-full object-cover grayscale opacity-20" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                        <div className="absolute bottom-6 left-8">
+                          <span className="text-[9px] font-black uppercase tracking-[0.4em] text-zinc-500 block mb-1">{data.id}</span>
+                          <h2 className="text-2xl font-black uppercase tracking-tighter">{data.label}</h2>
                         </div>
                       </div>
-                      <div className="flex flex-col gap-2">
-                        {data.clients.map((client: string, cIdx: number) => (
-                          <motion.div 
-                            key={cIdx}
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: cIdx * 0.02 + gIdx * 0.1 }}
-                            className="p-4 glass-panel rounded-2xl border border-white/5 hover:border-[#10b981]/20 transition-all group flex items-center justify-between"
-                          >
-                            <span className="text-sm md:text-base text-zinc-400 group-hover:text-white font-bold transition-colors">{client}</span>
-                            <div className="w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: tier.color }}></div>
-                          </motion.div>
+                      <div className="flex-1 overflow-y-auto p-8 scrollbar-hide space-y-3">
+                        {data.clients.map((client, i) => (
+                          <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-between">
+                            <span className="text-xs font-bold text-zinc-400">{client}</span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-green-500/50"></div>
+                          </div>
                         ))}
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
+                    </motion.div>
+                  ))}
+                </div>
             </div>
           </motion.div>
         );
       case 'contact':
-      case 'ai-architect':
-        return activeSection === 'ai-architect' ? <AIArchitect /> : (
-          <motion.div key="contact" {...pageTransition} className="pt-32 pb-24 px-6">
+        return (
+          <motion.div key="contact" {...pageTransition} className="pt-40 pb-24 px-6">
             <div className="max-w-7xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12 md:gap-24">
-                <div className="flex flex-col justify-center text-center lg:text-left">
+              <div className="grid lg:grid-cols-2 gap-24">
+                <div className="flex flex-col justify-center">
                   <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-6 block">Regional Hubs</span>
-                  <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.8]">Let's <br/><span className="text-white/20">Forge</span></h1>
-                  <div className="space-y-6 md:space-y-12">
-                    <div className="glass-panel p-8 md:p-10 rounded-3xl border border-white/5">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#10b981] mb-6">India Node</h4>
-                      <p className="text-2xl md:text-3xl font-black text-white mb-2">Bantwal Chambers</p>
-                      <p className="text-sm md:text-lg text-zinc-500 font-bold mb-6 italic tracking-tight">Mangalore, Karnataka 575011</p>
-                      <a href="https://wa.me/917259830339" target="_blank" className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 rounded-full text-lg md:text-xl font-black hover:bg-[#10b981] hover:text-black transition-all">Secure Uplink</a>
+                  <h1 className="text-7xl md:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.8]">Let's <br/><span className="text-white/20">Forge</span></h1>
+                  <div className="space-y-10">
+                    <div className="glass-panel p-10 rounded-3xl border border-white/5">
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#10b981]">India Node</h4>
+                        <span className="text-2xl">🇮🇳</span>
+                      </div>
+                      <p className="text-3xl font-black text-white mb-2">Bantwal Chambers</p>
+                      <p className="text-lg text-zinc-500 font-bold italic tracking-tight">Mangalore, KA 575011</p>
                     </div>
-                    <div className="glass-panel p-8 md:p-10 rounded-3xl border border-white/5">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#06b6d4] mb-6">KSA Node</h4>
-                      <p className="text-2xl md:text-3xl font-black text-white mb-2">Tahliyah St, Riyadh</p>
-                      <p className="text-sm md:text-lg text-zinc-500 font-bold mb-6 italic tracking-tight">Al Aqiq 13515</p>
-                      <a href="https://wa.me/966575271327" target="_blank" className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 rounded-full text-lg md:text-xl font-black hover:bg-[#06b6d4] hover:text-black transition-all">Regional Relay</a>
+                    <div className="glass-panel p-10 rounded-3xl border border-white/5">
+                      <div className="flex items-center justify-between mb-4">
+                        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#06b6d4]">KSA Node</h4>
+                        <span className="text-2xl">🇸🇦</span>
+                      </div>
+                      <p className="text-3xl font-black text-white mb-2">Tahliyah St, Riyadh</p>
+                      <p className="text-lg text-zinc-500 font-bold italic tracking-tight">Al Aqiq 13515</p>
                     </div>
                   </div>
                 </div>
-                <div className="glass-panel p-10 md:p-16 rounded-[3rem] md:rounded-[5rem] border border-white/5 relative flex flex-col items-center justify-center text-center">
-                  <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-8 leading-none">The Project <br/>Forge</h3>
-                  <p className="text-zinc-400 font-medium text-lg md:text-xl mb-12 max-w-sm leading-relaxed">Ready to initiate your 2026 deployment? Launch our secure enquiry forge to connect with our engineering team.</p>
-                  <button onClick={() => setIsModalOpen(true)} className="w-full max-w-sm py-6 bg-[#10b981] text-black font-black uppercase tracking-[0.3em] rounded-3xl hover:bg-white transition-all shadow-2xl text-xl">Start Mission</button>
+                <div className="glass-panel p-16 rounded-[4rem] border border-white/10 flex flex-col items-center justify-center text-center">
+                  <h3 className="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Initiate <br/>Protocol</h3>
+                  <p className="text-zinc-400 font-medium text-xl mb-12 max-w-sm leading-relaxed">Ready to deploy your next high-performance asset?</p>
+                  <button onClick={() => setIsModalOpen(true)} className="w-full max-w-sm py-6 bg-[#10b981] text-black font-black uppercase tracking-[0.3em] rounded-3xl hover:bg-white transition-all text-xl">Start Mission</button>
                   <div className="mt-12 pt-10 border-t border-white/5 w-full">
-                    <p className="font-black text-sm md:text-lg text-zinc-500">sayhello [at] bycomsolutions.com</p>
+                    <p className="font-black text-xl text-zinc-500 italic">sayhello [at] bycomsolutions.com</p>
                   </div>
                 </div>
               </div>
@@ -242,8 +316,8 @@ const App: React.FC = () => {
       <Footer />
       <EnquiryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(16,185,129,0.06),transparent_40%)]"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(16,185,129,0.08),transparent_40%)]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.04]"></div>
       </div>
     </div>
   );
