@@ -6,7 +6,10 @@ import { Message } from '../types';
 
 const BDMManager: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Systems online. I am your **Bycom BDM Liaison**.\n\nReady to engineer your digital dominance. How can we deploy our engineering units for your enterprise today?\n\n- Scale existing infrastructure\n- Build AI-native platforms\n- Modernize Fintech stacks" }
+    { 
+      role: 'assistant', 
+      content: "Protocol active. I am your **Bycom Strategic Liaison**.\n\nReady to discuss your enterprise vision. How can we accelerate your digital roadmap today?\n\n- Scale Infrastructure\n- AI Workflow Design\n- Custom Fintech Engines" 
+    }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +17,10 @@ const BDMManager: React.FC = () => {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      scrollRef.current.scrollTo({ 
+        top: scrollRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
     }
   }, [messages, isLoading]);
 
@@ -28,12 +34,15 @@ const BDMManager: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const history = currentMessages.slice(0, -1) as { role: 'user' | 'assistant', content: string }[];
+      const history = currentMessages
+        .filter(m => m.role === 'user' || m.role === 'assistant')
+        .map(m => ({ role: m.role as 'user' | 'assistant', content: m.content }));
+      
       const response = await getMistralResponse(input, history);
       setMessages(prev => [...prev, { role: 'assistant', content: response }]);
     } catch (err) {
       console.error("BDM UI Error:", err);
-      setMessages(prev => [...prev, { role: 'assistant', content: "Liaison uplink timed out. Contacting manual relay..." }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: "Neural relay disrupted. Please reach out via WhatsApp for immediate support: https://wa.me/966575271327" }]);
     } finally {
       setIsLoading(false);
     }
@@ -49,22 +58,18 @@ const BDMManager: React.FC = () => {
         >
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-[#10b981]/30 bg-[#10b981]/5 mb-8">
              <div className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></div>
-             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#10b981]">Growth Strategist Active</span>
+             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#10b981]">Liaison Core Active</span>
           </div>
           <h2 className="text-6xl md:text-8xl font-black mb-10 tracking-tighter uppercase leading-[0.85] text-white">
             Mistral <br/><span className="text-white/20">Liaison</span>
           </h2>
-          <p className="text-zinc-200 text-xl md:text-2xl mb-12 leading-relaxed font-bold max-w-lg italic opacity-90">
-            "Your digital legacy isn't an accident—it's engineered. Let's draft your next-gen growth strategy today."
+          <p className="text-zinc-400 text-xl md:text-2xl mb-12 leading-relaxed font-bold max-w-lg italic opacity-90">
+            "We don't just build code—we engineer outcomes. Let's draft your next strategic move."
           </p>
           <div className="flex flex-wrap gap-4">
-            <div className="px-8 py-5 glass-panel rounded-3xl border border-white/10 flex flex-col bg-gradient-to-br from-emerald-500/10 to-transparent">
-              <span className="text-[#10b981] font-black text-3xl">BDM</span>
-              <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mt-2">Executive Lead</span>
-            </div>
-            <div className="px-8 py-5 glass-panel rounded-3xl border border-white/10 flex flex-col bg-gradient-to-br from-purple-500/10 to-transparent">
-              <span className="text-purple-400 font-black text-3xl">M-L3</span>
-              <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mt-2">Mistral Core</span>
+            <div className="px-8 py-5 glass-panel rounded-3xl border border-white/10 flex flex-col">
+              <span className="text-[#10b981] font-black text-3xl">L-01</span>
+              <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mt-2">Relay Node</span>
             </div>
           </div>
         </motion.div>
@@ -73,32 +78,32 @@ const BDMManager: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="glass-panel rounded-[3.5rem] h-[750px] flex flex-col overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(16,185,129,0.15)] bg-black/40 backdrop-blur-3xl"
+          className="glass-panel rounded-[3rem] h-[650px] flex flex-col overflow-hidden border border-white/20 shadow-2xl bg-[#0a0a0c]/80"
         >
-          <div className="bg-white/5 p-8 border-b border-white/10 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-3 h-3 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_15px_#10b981]"></div>
-              <span className="text-[11px] font-black tracking-[0.3em] uppercase text-zinc-200">STRATEGIC RELAY // BDM-BYCOM</span>
+          <div className="bg-white/5 p-6 border-b border-white/10 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-2.5 h-2.5 bg-[#10b981] rounded-full animate-pulse"></div>
+              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-zinc-300">SECURE UPLINK // BDM</span>
             </div>
-            <div className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">ENCRYPTED</div>
+            <div className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Mistral Large 2</div>
           </div>
 
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-10 space-y-10 scrollbar-hide">
+          <div ref={scrollRef} className="flex-1 overflow-y-auto p-8 space-y-8 scrollbar-hide">
             <AnimatePresence mode="popLayout">
               {messages.map((m, i) => (
                 <motion.div 
                   key={i}
-                  initial={{ opacity: 0, x: m.role === 'user' ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[85%] px-8 py-6 rounded-[2.5rem] text-sm md:text-base shadow-2xl relative ${
+                  <div className={`max-w-[85%] px-6 py-4 rounded-[1.8rem] text-sm md:text-base shadow-xl ${
                     m.role === 'user' 
-                      ? 'bg-gradient-to-r from-emerald-500 to-[#10b981] text-black font-black' 
-                      : 'bg-white/[0.07] border border-white/10 text-white font-semibold'
+                      ? 'bg-[#10b981] text-black font-black' 
+                      : 'bg-white/5 border border-white/10 text-zinc-200'
                   }`}>
                     {m.role === 'assistant' ? (
-                      <div className="prose prose-invert max-w-none prose-p:leading-relaxed prose-strong:text-[#10b981]">
+                      <div className="prose prose-invert prose-sm max-w-none prose-p:leading-relaxed prose-strong:text-[#10b981] prose-a:text-[#10b981] prose-a:font-black">
                         <ReactMarkdown>{m.content}</ReactMarkdown>
                       </div>
                     ) : (
@@ -109,32 +114,32 @@ const BDMManager: React.FC = () => {
               ))}
             </AnimatePresence>
             {isLoading && (
-              <motion.div animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5 }} className="flex justify-start">
-                <div className="bg-white/10 border border-white/10 px-8 py-5 rounded-full flex gap-3 items-center">
-                  <div className="w-2.5 h-2.5 bg-[#10b981] rounded-full"></div>
-                  <div className="w-2.5 h-2.5 bg-zinc-500 rounded-full"></div>
-                  <div className="w-2.5 h-2.5 bg-zinc-700 rounded-full"></div>
+              <div className="flex justify-start">
+                <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-full flex gap-2">
+                  <div className="w-2 h-2 bg-[#10b981] rounded-full animate-bounce"></div>
+                  <div className="w-2 h-2 bg-[#10b981]/60 rounded-full animate-bounce delay-75"></div>
+                  <div className="w-2 h-2 bg-[#10b981]/30 rounded-full animate-bounce delay-150"></div>
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
 
-          <div className="p-8 bg-black/60 backdrop-blur-3xl border-t border-white/10">
+          <div className="p-6 bg-black/40 backdrop-blur-3xl border-t border-white/10">
             <div className="relative">
               <input 
                 type="text" 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Draft your mission Specs..."
-                className="w-full bg-white/[0.05] border border-white/10 rounded-3xl px-8 py-6 text-lg focus:outline-none focus:border-[#10b981] transition-all pr-20 placeholder:text-zinc-600 font-black text-white"
+                placeholder="Message Liaison..."
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-base focus:outline-none focus:border-[#10b981] transition-all pr-16 text-white placeholder:text-zinc-600 font-bold"
               />
               <button 
                 onClick={handleSend}
                 disabled={isLoading}
-                className="absolute right-4 top-4 h-14 w-14 bg-[#10b981] rounded-2xl flex items-center justify-center text-black hover:bg-white transition-all disabled:opacity-50 shadow-lg"
+                className="absolute right-2 top-2 h-12 w-12 bg-[#10b981] rounded-xl flex items-center justify-center text-black hover:bg-white transition-all disabled:opacity-50"
               >
-                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </button>
             </div>
           </div>
