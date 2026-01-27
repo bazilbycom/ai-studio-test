@@ -25,7 +25,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-[4rem] sm:text-7xl md:text-8xl lg:text-[clamp(3rem,10vw,8rem)] font-black mb-6 md:mb-10 leading-[0.9] md:leading-[0.85] tracking-tighter uppercase flex flex-col items-center sm:block"
+          className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[clamp(3rem,10vw,8rem)] font-black mb-6 md:mb-10 leading-[1] sm:leading-[0.85] tracking-tighter uppercase flex flex-col items-center sm:block"
         >
           <span className="block sm:inline">Build</span> 
           <span className="block sm:inline sm:mx-4 text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#06b6d4] to-[#8b5cf6] text-glow">Beyond</span> 
