@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Bycom/Bycom-Solutions-2026 # Ensure this is your actual repo path
+  repo: bazilbycom/ai-studio-test
   branch: main
   
   # ⚠️ TO FIX THE NETLIFY REDIRECT:
@@ -8,7 +8,7 @@ backend:
   # For Cloudflare Pages, you need a small OAuth proxy.
   # 1. Deploy this: https://github.com/vencax/netlify-cms-github-oauth-provider
   # 2. Uncomment the line below and add your proxy URL:
-  # base_url: https://your-oauth-proxy.workers.dev
+  base_url: https://sveltia-cms-auth.bycomsolutions.workers.dev
 
 local_backend: true # Allows editing locally via 'npx decap-server' (works with Sveltia too)
 
