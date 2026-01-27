@@ -1,22 +1,43 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ServiceCardProps } from '../types';
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
+};
+
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, tags }) => (
-  <div className="glass-panel p-8 rounded-3xl border border-white/5 hover:border-cyan-500/50 transition-all group cursor-default">
-    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-black transition-all">
+  <motion.div 
+    variants={itemVariants}
+    whileHover={{ y: -8, transition: { duration: 0.2 } }}
+    className="glass-panel p-8 rounded-3xl border border-white/5 hover:border-cyan-500/50 transition-all group cursor-default relative overflow-hidden"
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/5 transition-all duration-500"></div>
+    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-black transition-all relative z-10 shadow-[0_0_20px_rgba(6,182,212,0)] group-hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]">
       {icon}
     </div>
-    <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">{title}</h3>
-    <p className="text-zinc-400 text-sm mb-6 leading-relaxed">{description}</p>
-    <div className="flex flex-wrap gap-2">
+    <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter relative z-10">{title}</h3>
+    <p className="text-zinc-400 text-sm mb-6 leading-relaxed relative z-10">{description}</p>
+    <div className="flex flex-wrap gap-2 relative z-10">
       {tags.map(tag => (
-        <span key={tag} className="text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded bg-white/5 text-zinc-300 border border-white/5">
+        <span key={tag} className="text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded bg-white/5 text-zinc-300 border border-white/5 group-hover:border-cyan-500/30 transition-colors">
           {tag}
         </span>
       ))}
     </div>
-  </div>
+  </motion.div>
 );
 
 const Services: React.FC = () => {
@@ -51,20 +72,38 @@ const Services: React.FC = () => {
     <section id="services" className="py-24 px-6 relative">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-          <div className="max-w-xl">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-xl"
+          >
             <span className="text-cyan-400 font-bold uppercase tracking-widest text-xs mb-4 block">Our Core Arsenal</span>
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none">
               Specialized <br/><span className="text-white/40">Digital Units</span>
             </h2>
-          </div>
-          <p className="text-zinc-500 max-w-sm text-right hidden md:block">
+          </motion.div>
+          <motion.p 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-zinc-500 max-w-sm text-right hidden md:block"
+          >
             We don't just build products; we build high-precision digital tools that drive business growth.
-          </p>
+          </motion.p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {servicesData.map((s, idx) => <ServiceCard key={idx} {...s} />)}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
