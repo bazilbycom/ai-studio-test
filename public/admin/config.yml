@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: your-github-username/your-repo-name # REPLACE THIS with your username/repo
+  repo: bazilbycom/ai-studio-test
   branch: main
 
 local_backend: true # Important for local testing
