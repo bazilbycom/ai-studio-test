@@ -6,7 +6,7 @@ backend:
   # Since you are not on Netlify, you need an "Auth Bridge".
   # Use a proxy service like: https://github.com/vencax/netlify-cms-github-oauth-provider
   # And set it here:
-  # base_url: https://your-auth-bridge.com
+  base_url: https://sveltia-cms-auth.bycomsolutions.workers.dev
 
 local_backend: true # Run 'npx decap-server' locally to edit without auth
 
