@@ -1,17 +1,23 @@
 backend:
   name: github
-  repo: bazilbycom/ai-studio-test # Ensure this matches your ACTUAL repo name
+  repo: Bycom/Bycom-Solutions-2026 # Ensure this is your actual repo path
   branch: main
-  # ⚠️ TO FIX THE REDIRECT:
-  # Since you are not on Netlify, you need an "Auth Bridge".
-  # Use a proxy service like: https://github.com/vencax/netlify-cms-github-oauth-provider
-  # And set it here:
-  base_url: https://sveltia-cms-auth.bycomsolutions.workers.dev
+  
+  # ⚠️ TO FIX THE NETLIFY REDIRECT:
+  # The redirect to api.netlify.com happens because no base_url is specified.
+  # For Cloudflare Pages, you need a small OAuth proxy.
+  # 1. Deploy this: https://github.com/vencax/netlify-cms-github-oauth-provider
+  # 2. Uncomment the line below and add your proxy URL:
+  # base_url: https://your-oauth-proxy.workers.dev
 
-local_backend: true # Run 'npx decap-server' locally to edit without auth
+local_backend: true # Allows editing locally via 'npx decap-server' (works with Sveltia too)
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
+
+# Site-specific display settings for Sveltia CMS
+site_url: https://bycomsolutions.com
+display_main_menus: true
 
 collections:
   - name: "blog"
