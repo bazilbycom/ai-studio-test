@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -50,11 +49,11 @@ const Process: React.FC = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
               className="relative group p-8 glass-panel rounded-3xl border border-white/5 hover:border-[#10b981]/20 transition-all duration-500 overflow-hidden"
             >
               <div 
-                className="text-7xl font-black mb-6 opacity-40 group-hover:opacity-100 transition-all duration-700 select-none"
+                className="text-7xl font-black mb-6 opacity-60 md:opacity-40 group-hover:opacity-100 transition-all duration-700 select-none"
                 style={{ 
                   color: step.color,
                   textShadow: `0 0 20px ${step.color}22`
@@ -62,13 +61,13 @@ const Process: React.FC = () => {
               >
                 {step.num}
               </div>
-              <h3 className="text-xl font-black uppercase tracking-widest mb-4 group-hover:text-white transition-colors">{step.title}</h3>
-              <p className="text-zinc-500 text-sm leading-relaxed group-hover:text-zinc-300 transition-colors">
+              <h3 className="text-xl font-black uppercase tracking-widest mb-4 group-hover:text-white transition-colors text-white md:text-zinc-200">{step.title}</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed group-hover:text-zinc-300 transition-colors">
                 {step.desc}
               </p>
               
               <div 
-                className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-transparent to-transparent group-hover:via-[#10b981] transition-all duration-700"
+                className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#10b981] to-transparent opacity-50 md:opacity-0 group-hover:opacity-100 transition-all duration-700"
               ></div>
             </motion.div>
           ))}

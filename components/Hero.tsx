@@ -9,18 +9,18 @@ const ShootingStar = ({ delay, top, left }: { delay: number, top: string, left: 
   <motion.div
     initial={{ x: "-100%", y: "0%", opacity: 0 }}
     animate={{ 
-      x: ["0%", "300%"], 
-      y: ["0%", "200%"],
+      x: ["0%", "350%"], 
+      y: ["0%", "250%"],
       opacity: [0, 1, 0] 
     }}
     transition={{ 
-      duration: 2.5, 
+      duration: 3, 
       repeat: Infinity, 
-      repeatDelay: Math.random() * 4 + 2,
+      repeatDelay: Math.random() * 3 + 1,
       delay,
       ease: "linear"
     }}
-    className="absolute w-[220px] h-[1px] bg-gradient-to-r from-transparent via-[#10b981] to-transparent z-0 rotate-[-25deg]"
+    className="absolute w-[250px] h-[1px] bg-gradient-to-r from-transparent via-[#10b981] to-transparent z-0 rotate-[-25deg]"
     style={{ top, left }}
   />
 );
@@ -30,15 +30,16 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
     <section className="relative flex items-center justify-center overflow-hidden h-screen w-full px-6 md:px-12">
       {/* Enhanced Background Layers */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <ShootingStar delay={0} top="15%" left="5%" />
-        <ShootingStar delay={1} top="40%" left="10%" />
-        <ShootingStar delay={3} top="65%" left="2%" />
-        <ShootingStar delay={5} top="30%" left="15%" />
-        <ShootingStar delay={7} top="80%" left="8%" />
+        <ShootingStar delay={0} top="10%" left="5%" />
+        <ShootingStar delay={1.5} top="30%" left="15%" />
+        <ShootingStar delay={4} top="50%" left="2%" />
+        <ShootingStar delay={0.5} top="70%" left="20%" />
+        <ShootingStar delay={2.2} top="85%" left="10%" />
+        <ShootingStar delay={5} top="20%" left="25%" />
         
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#10b981]/10 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[180px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[200px]" />
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#10b981]/15 rounded-full blur-[160px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-[200px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-emerald-500/5 rounded-full blur-[220px]" />
       </div>
 
       <div className="max-w-7xl relative z-10 w-full flex flex-col items-center justify-center text-center">
@@ -71,7 +72,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-sm sm:text-lg md:text-2xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed font-medium px-4"
+          className="text-[14px] sm:text-lg md:text-2xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed font-medium px-4"
         >
           Bycom Solutions constructs <span className="text-white font-bold">ultra-performant</span> digital infrastructure and AI ecosystems for industry leaders.
         </motion.p>
