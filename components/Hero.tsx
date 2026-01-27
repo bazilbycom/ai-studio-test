@@ -1,9 +1,18 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeroProps {
   onOpenModal: () => void;
 }
+
+const spintax = [
+  "Engineering Peak Performance",
+  "Beyond Computing Limits",
+  "Constructing Digital Excellence",
+  "Architecting Future Systems",
+  "Hyper-Scale Infrastructure",
+  "Sub-ms Latency Engineering"
+];
 
 const ShootingStar = ({ delay, top, left }: { delay: number, top: string, left: string }) => (
   <motion.div
@@ -26,6 +35,15 @@ const ShootingStar = ({ delay, top, left }: { delay: number, top: string, left: 
 );
 
 const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % spintax.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative flex items-center justify-center overflow-hidden h-screen w-full px-4 md:px-12">
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -44,17 +62,27 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-[#10b981]/20 glass-panel mt-12 md:mt-0 mb-10 text-[10px] md:text-[12px] font-black tracking-[0.4em] uppercase text-[#10b981]"
+          className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-[#10b981]/20 glass-panel mt-12 md:mt-0 mb-10 text-[10px] md:text-[12px] font-black tracking-[0.4em] uppercase text-[#10b981] min-w-[280px] justify-center"
         >
           <span className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_12px_#10b981]"></span>
-          Engineering Peak Performance
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.5 }}
+            >
+              {spintax[index]}
+            </motion.span>
+          </AnimatePresence>
         </motion.div>
         
         <motion.h1 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(3rem,8vw,8.5rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full mx-auto"
+          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(3rem,8vw,8.5rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full mx-auto text-white"
         >
           <span className="md:hidden block">
             <span className="block">Build</span>
@@ -70,9 +98,9 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-[14px] sm:text-lg md:text-2xl text-zinc-300 mb-12 max-w-2xl mx-auto leading-relaxed font-medium px-4"
+          className="text-[14px] sm:text-lg md:text-2xl text-zinc-200 mb-12 max-w-2xl mx-auto leading-relaxed font-semibold px-4 drop-shadow-lg"
         >
-          Bycom Solutions constructs <span className="text-white font-bold">ultra-performant</span> digital infrastructure and AI ecosystems for industry leaders.
+          Bycom Solutions constructs <span className="text-[#10b981] font-black">ultra-performant</span> digital infrastructure and AI ecosystems for industry leaders.
         </motion.p>
         
         <motion.div 
@@ -89,21 +117,12 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           </button>
           <a 
             href="#portfolio" 
-            className="w-full sm:w-auto px-10 py-4 md:px-14 md:py-5 border border-white/10 glass-panel font-black uppercase tracking-[0.25em] rounded-2xl hover:border-[#10b981] transition-all text-[10px] md:text-[11px]"
+            className="w-full sm:w-auto px-10 py-4 md:px-14 md:py-5 border border-white/10 glass-panel font-black uppercase tracking-[0.25em] rounded-2xl hover:border-[#10b981] transition-all text-[10px] md:text-[11px] text-white"
           >
             View Portfolio
           </a>
         </motion.div>
       </div>
-
-      <motion.div 
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-30"
-      >
-        <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500">Discover Matrix</span>
-        <div className="w-px h-12 bg-gradient-to-b from-[#10b981] to-transparent"></div>
-      </motion.div>
     </section>
   );
 };

@@ -66,17 +66,17 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
               <div className="space-y-4">
                 <div className="group">
                   <label className="block text-[10px] font-black uppercase tracking-widest text-white mb-2 px-1">Full Name / Company</label>
-                  <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} type="text" className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all font-bold text-base text-white placeholder:text-zinc-600 shadow-inner" placeholder="John Doe" />
+                  <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} type="text" className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all font-bold text-base text-white placeholder:text-white shadow-inner" placeholder="John Doe" />
                 </div>
                 <div className="group">
                   <label className="block text-[10px] font-black uppercase tracking-widest text-white mb-2 px-1">Email Address</label>
-                  <input required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} type="email" className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all font-bold text-base text-white placeholder:text-zinc-600 shadow-inner" placeholder="name@company.com" />
+                  <input required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} type="email" className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all font-bold text-base text-white placeholder:text-white shadow-inner" placeholder="name@company.com" />
                 </div>
               </div>
 
               <div className="group">
                 <label className="block text-[10px] font-black uppercase tracking-widest text-white mb-2 px-1">How can we help?</label>
-                <textarea required value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} rows={4} className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all resize-none font-bold text-base text-white placeholder:text-zinc-600 shadow-inner" placeholder="Describe your vision and requirements..."></textarea>
+                <textarea required value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} rows={4} className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all resize-none font-bold text-base text-white placeholder:text-white shadow-inner" placeholder="Describe your vision and requirements..."></textarea>
               </div>
 
               <button 

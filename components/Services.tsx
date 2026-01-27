@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -20,24 +19,24 @@ const Services: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-6 md:gap-8">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-4 block">Core Arsenal</span>
-            <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-left">
+            <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-left text-white">
               Operational <br className="md:block" /><span className="text-white/20">Service Units</span>
             </h2>
           </motion.div>
-          <motion.p initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-zinc-500 max-w-sm text-left md:text-right font-medium text-sm md:text-base">
+          <motion.p initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-zinc-300 max-w-sm text-left md:text-right font-semibold text-sm md:text-base">
             High-precision digital tools for enterprise business acceleration.
           </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-12">
           {servicesData.map((s, idx) => (
-            <motion.div key={idx} whileHover={{ y: -8 }} className="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-[#10b981]/40 transition-all flex flex-col h-full">
+            <motion.div key={idx} whileHover={{ y: -8 }} className="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-[#10b981]/40 transition-all flex flex-col h-full bg-white/[0.02]">
               <span className="text-4xl font-black text-white/40 mb-6 block">{s.num}</span>
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-2 leading-tight">{s.title}</h3>
-              <p className="text-[#10b981] text-[10px] font-bold uppercase tracking-widest mb-4">{s.subtitle}</p>
-              <p className="text-zinc-500 text-xs leading-relaxed mb-6 flex-grow">{s.desc}</p>
-              <div className="flex flex-wrap gap-2">
-                {s.tags.map(tag => <span key={tag} className="text-[8px] font-black uppercase tracking-widest px-2 py-1 rounded bg-white/5 border border-white/5">{tag}</span>)}
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-2 leading-tight text-white">{s.title}</h3>
+              <p className="text-[#10b981] text-[10px] font-bold uppercase tracking-widest mb-4 drop-shadow-sm">{s.subtitle}</p>
+              <p className="text-zinc-300 text-xs leading-relaxed mb-6 flex-grow font-medium">{s.desc}</p>
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {s.tags.map(tag => <span key={tag} className="text-[8px] font-black uppercase tracking-widest px-2 py-1 rounded bg-white/10 border border-white/10 text-white">{tag}</span>)}
               </div>
             </motion.div>
           ))}
