@@ -1,0 +1,8 @@
+{
+  "name": "Bycom Solutions - AI-Driven Digital Agency",
+  "description": "A futuristic, high-performance website for Bycom Solutions, featuring an AI-powered project architect and cutting-edge UI design.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
