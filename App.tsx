@@ -9,6 +9,7 @@ import EnquiryModal from './components/EnquiryModal';
 import LegalPage from './components/LegalPage';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
+import ServicePage from './components/ServicePage';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const portfolioClients = {
@@ -32,6 +33,7 @@ const portfolioClients = {
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [blogSlug, setBlogSlug] = useState<string | null>(null);
+  const [serviceSlug, setServiceSlug] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -40,9 +42,15 @@ const App: React.FC = () => {
       
       if (hash.startsWith('blog/')) {
         setBlogSlug(hash.split('/')[1]);
+        setServiceSlug(null);
         setActiveSection('blog-post');
+      } else if (hash.startsWith('service/')) {
+        setServiceSlug(hash.split('/')[1]);
+        setBlogSlug(null);
+        setActiveSection('service-detail');
       } else {
         setBlogSlug(null);
+        setServiceSlug(null);
         setActiveSection(hash);
       }
       
@@ -84,6 +92,10 @@ const App: React.FC = () => {
 
     if (activeSection === 'blog-post' && blogSlug) {
       return <motion.div key="blog-post" {...pageTransition}><BlogPost slug={blogSlug} /></motion.div>;
+    }
+
+    if (activeSection === 'service-detail' && serviceSlug) {
+      return <motion.div key="service-detail" {...pageTransition}><ServicePage slug={serviceSlug} onOpenModal={() => setIsModalOpen(true)} /></motion.div>;
     }
 
     switch (activeSection) {

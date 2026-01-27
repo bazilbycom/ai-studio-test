@@ -33,7 +33,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
         <h2 className="text-4xl font-black mb-4 uppercase tracking-tighter">Report Not Found</h2>
-        <button onClick={() => window.location.hash = 'blog'} className="text-[#10b981] font-black uppercase tracking-widest">Return to Hub</button>
+        <button onClick={() => window.location.hash = 'blog'} className="text-[#10b981] font-black uppercase tracking-widest">Return to Blog</button>
       </div>
     );
   }
@@ -53,7 +53,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
         <div className="max-w-4xl mx-auto relative z-10 text-center">
           <button onClick={() => window.location.hash = 'blog'} className="mb-12 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[#10b981] hover:text-white transition-colors">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M7 16l-4-4m0 0l4-4m-4 4h18" /></svg>
-            Back to Hub
+            Back to Blog
           </button>
           
           <div className="flex justify-center gap-3 mb-8">
@@ -74,7 +74,7 @@ const BlogPost: React.FC<BlogPostProps> = ({ slug }) => {
             <div className="w-px h-8 bg-white/10"></div>
             <div className="text-left">
               <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-1">Source</p>
-              <p className="text-white font-bold">Bycom Intelligence</p>
+              <p className="text-white font-bold">Bycom Blog</p>
             </div>
           </div>
         </div>

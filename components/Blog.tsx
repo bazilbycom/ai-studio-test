@@ -25,9 +25,9 @@ const Blog: React.FC = () => {
     <section className="pt-40 pb-24 px-6 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
-          <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-4 block">Intelligence Hub</span>
+          <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-4 block">Archive Hub</span>
           <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-[0.8] mb-8">
-            The <br/><span className="text-white/20">Protocol</span>
+            The <br/><span className="text-white/20">Blog</span>
           </h1>
           <p className="text-zinc-500 max-w-xl text-lg font-medium">Engineering insights, architectural blueprints, and the future of digital ecosystems curated by Bycom Labs.</p>
         </div>

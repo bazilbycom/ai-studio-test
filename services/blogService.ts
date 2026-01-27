@@ -1,6 +1,6 @@
 /**
- * Bycom Local Intelligence Fetcher
- * Optimized for Decap CMS / Git-based content
+ * Bycom Local Blog Fetcher
+ * Optimized for Sveltia CMS / Git-based content
  */
 
 export interface Post {
@@ -14,7 +14,7 @@ export interface Post {
   body: string;
 }
 
-// Mock data for initial launch (since real files depend on your Git commits)
+// Mock data for initial launch
 const MOCK_POSTS: Post[] = [
   {
     id: '1',
@@ -48,8 +48,6 @@ We are moving away from fixed grids. Our new design system adapts based on real-
 ];
 
 export const fetchPosts = async (): Promise<Post[]> => {
-  // In a production Vite environment, you would use import.meta.glob or fetch from a JSON manifest
-  // For now, we return our high-quality mock data which matches the Decap schema
   return MOCK_POSTS;
 };
 

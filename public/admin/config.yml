@@ -1,27 +1,28 @@
 backend:
   name: github
-  repo: bazilbycom/ai-studio-test
+  repo: Bycom/Bycom-Solutions-2026
   branch: main
   
-  # ⚠️ TO FIX THE NETLIFY REDIRECT:
-  # The redirect to api.netlify.com happens because no base_url is specified.
-  # For Cloudflare Pages, you need a small OAuth proxy.
-  # 1. Deploy this: https://github.com/vencax/netlify-cms-github-oauth-provider
-  # 2. Uncomment the line below and add your proxy URL:
-  base_url: https://sveltia-cms-auth.bycomsolutions.workers.dev
-
-local_backend: true # Allows editing locally via 'npx decap-server' (works with Sveltia too)
+local_backend: true
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
-# Site-specific display settings for Sveltia CMS
 site_url: https://bycomsolutions.com
 display_main_menus: true
 
+# Define reusable SEO fields
+seo_fields: &seo_fields
+  - { label: "SEO & Meta Settings", name: "seo_section", widget: "heading" }
+  - { label: "Meta Title", name: "meta_title", widget: "string", hint: "Optimal length: 50-60 characters." }
+  - { label: "Meta Description", name: "meta_description", widget: "text", hint: "Optimal length: 150-160 characters." }
+  - { label: "Focus Keywords", name: "keywords", widget: "string", hint: "Comma separated list." }
+  - { label: "Social Share Image", name: "social_image", widget: "image", required: false }
+
 collections:
-  - name: "blog"
-    label: "Intelligence Reports"
+  - name: "posts"
+    label: "Blog Posts"
+    label_singular: "Post"
     folder: "content/blog"
     create: true
     slug: "{{slug}}"
@@ -31,4 +32,30 @@ collections:
       - { label: "Thumbnail", name: "thumbnail", widget: "image" }
       - { label: "Excerpt", name: "excerpt", widget: "text" }
       - { label: "Categories", name: "categories", widget: "list", default: ["Engineering"] }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Post Content", name: "body", widget: "markdown" }
+      - *seo_fields
+
+  - name: "services"
+    label: "Service Pages"
+    label_singular: "Service"
+    folder: "content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Service Name", name: "title", widget: "string" }
+      - { label: "Service Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Short Summary", name: "summary", widget: "text" }
+      - { label: "Main Image", name: "image", widget: "image" }
+      - { label: "Detailed Description", name: "body", widget: "markdown" }
+      - { label: "Service Tags", name: "tags", widget: "list" }
+      - *seo_fields
+
+  - name: "pages"
+    label: "Legal & Static Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Page Title", name: "title", widget: "string" }
+      - { label: "Body Content", name: "body", widget: "markdown" }
+      - *seo_fields
