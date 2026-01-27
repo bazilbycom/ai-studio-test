@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: Bycom/Bycom-Solutions-2026
+  repo: bazilbycom/ai-studio-test
   branch: main
-  
+  base_url: https://sveltia-cms-auth.bycomsolutions.workers.dev
 local_backend: true
 
 media_folder: "public/images/uploads"
