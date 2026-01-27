@@ -1,7 +1,7 @@
-
 import { GoogleGenAI } from "@google/genai";
 
 export const getAIArchitectResponse = async (userPrompt: string, history: { role: 'user' | 'assistant', content: string }[]) => {
+  // Directly initialize using process.env.API_KEY as per instructions
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const systemInstruction = `
@@ -22,7 +22,10 @@ export const getAIArchitectResponse = async (userPrompt: string, history: { role
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: [
-        ...history.map(h => ({ role: h.role === 'user' ? 'user' : 'model', parts: [{ text: h.content }] })),
+        ...history.map(h => ({ 
+          role: h.role === 'user' ? 'user' : 'model', 
+          parts: [{ text: h.content }] 
+        })),
         { role: 'user', parts: [{ text: userPrompt }] }
       ],
       config: {
@@ -32,9 +35,9 @@ export const getAIArchitectResponse = async (userPrompt: string, history: { role
       }
     });
 
-    return response.text || "I apologize, the uplink is unstable. Please retry your request or reach out at contact@bycomsolutions.com.";
+    return response.text || "Neural uplink disrupted. Please retry your request or reach out at contact@bycomsolutions.com.";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    return "Error: Neural link disrupted. Our tech-ops team is on it. Please try again shortly!";
+    throw error; // Let the component handle UI error state
   }
 };

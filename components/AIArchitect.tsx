@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -23,17 +22,20 @@ const AIArchitect: React.FC = () => {
     if (!input.trim() || isLoading) return;
 
     const userMsg: Message = { role: 'user', content: input };
-    setMessages(prev => [...prev, userMsg]);
+    const currentMessages = [...messages, userMsg];
+    setMessages(currentMessages);
     setInput('');
     setIsLoading(true);
 
     try {
-      // Ensure we pass the updated message history including the current user message
-      const response = await getAIArchitectResponse(input, messages);
+      // Slicing at index 1 to skip the initial assistant greeting, 
+      // ensuring history starts with a 'user' role for the Gemini API.
+      const historyForAI = currentMessages.slice(1, -1);
+      const response = await getAIArchitectResponse(input, historyForAI);
       setMessages(prev => [...prev, { role: 'assistant', content: response }]);
     } catch (err) {
-      console.error(err);
-      setMessages(prev => [...prev, { role: 'assistant', content: "Neural link timeout. Please try again or contact support." }]);
+      console.error("AI Architect UI Error:", err);
+      setMessages(prev => [...prev, { role: 'assistant', content: "Neural link timeout. Please verify your connection or contact support." }]);
     } finally {
       setIsLoading(false);
     }
