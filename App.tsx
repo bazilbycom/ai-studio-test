@@ -72,15 +72,15 @@ const App: React.FC = () => {
       case 'home':
         return (
           <motion.div key="home" {...pageTransition}>
-            <Hero />
+            <Hero onOpenModal={() => setIsModalOpen(true)} />
             
             <div className="border-y border-white/5 bg-black py-12 overflow-hidden">
               <div className="flex animate-marquee whitespace-nowrap">
                 {[...Array(6)].map((_, i) => (
-                  <div key={i} className="flex items-center gap-16 mx-16">
-                    <span className="text-3xl font-black text-white/30 uppercase tracking-tighter">AI-Optimized Deployments</span>
+                  <div key={i} className="flex items-center gap-16 mx-8 md:mx-16">
+                    <span className="text-xl md:text-3xl font-black text-white/30 uppercase tracking-tighter">AI-Optimized Deployments 2026</span>
                     <span className="w-2 h-2 bg-[#10b981] rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
-                    <span className="text-3xl font-black text-white/30 uppercase tracking-tighter">Hyper-Scale Engineering</span>
+                    <span className="text-xl md:text-3xl font-black text-white/30 uppercase tracking-tighter">Hyper-Scale Engineering</span>
                     <span className="w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.5)]"></span>
                   </div>
                 ))}
@@ -92,18 +92,18 @@ const App: React.FC = () => {
             <AIArchitect />
             
             <section className="py-24 px-6 bg-[#080808] border-t border-white/5">
-              <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+              <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
                 <div className="max-w-lg">
-                  <h2 className="text-5xl font-black uppercase tracking-tighter mb-6 leading-none">Global <br/>Archive</h2>
-                  <p className="text-zinc-500 mb-8 font-medium">Over 60+ global brands and high-velocity startups powered by Bycom core protocols.</p>
-                  <button onClick={() => window.location.hash = 'portfolio'} className="text-[#10b981] font-black uppercase tracking-widest text-xs flex items-center gap-2 group">
+                  <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-6 leading-none">Global <br/>Archive</h2>
+                  <p className="text-zinc-500 mb-8 font-medium">Over 80+ global brands and high-velocity startups powered by Bycom core protocols in 2026.</p>
+                  <button onClick={() => window.location.hash = 'portfolio'} className="mx-auto md:mx-0 text-[#10b981] font-black uppercase tracking-widest text-xs flex items-center gap-2 group">
                     Explore Clientele
                     <span className="group-hover:translate-x-2 transition-transform">→</span>
                   </button>
                 </div>
                 <div className="flex gap-4 flex-wrap justify-center">
                   {["Fintech", "Health", "Real Estate", "Crypto", "Media"].map(tag => (
-                     <div key={tag} className="px-6 py-3 glass-panel rounded-full border border-white/5 text-[10px] font-black uppercase tracking-widest">{tag}</div>
+                     <div key={tag} className="px-5 py-2.5 md:px-6 md:py-3 glass-panel rounded-full border border-white/5 text-[9px] md:text-[10px] font-black uppercase tracking-widest">{tag}</div>
                   ))}
                 </div>
               </div>
@@ -128,7 +128,7 @@ const App: React.FC = () => {
               <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-6 block">The Clientele Matrix</span>
               <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter mb-20 leading-[0.8]">Global <br/><span className="text-white/20">Partnerships</span></h1>
               
-              <div className="grid md:grid-cols-3 gap-12">
+              <div className="grid md:grid-cols-3 gap-8 md:gap-12">
                 {[
                   { key: 'tier1', color: '#10b981' },
                   { key: 'tier2', color: '#06b6d4' },
@@ -137,11 +137,11 @@ const App: React.FC = () => {
                   const data = (portfolioClients as any)[tier.key];
                   return (
                     <div key={gIdx} className="space-y-6">
-                      <div className="relative h-64 rounded-3xl overflow-hidden glass-panel border border-white/10 mb-8 group">
+                      <div className="relative h-48 md:h-64 rounded-2xl md:rounded-3xl overflow-hidden glass-panel border border-white/10 mb-6 md:mb-8 group">
                         <img src={data.image} alt={data.label} className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                         <div className="absolute bottom-6 left-6">
-                           <p className="text-[10px] font-black uppercase tracking-widest text-[#10b981]">{data.label}</p>
+                           <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-[#10b981]">{data.label}</p>
                         </div>
                       </div>
                       <div className="flex flex-col gap-2">
@@ -151,9 +151,9 @@ const App: React.FC = () => {
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: cIdx * 0.02 + gIdx * 0.1 }}
-                            className="p-4 glass-panel rounded-xl border border-white/5 hover:border-white/20 transition-all group flex items-center justify-between"
+                            className="p-3 md:p-4 glass-panel rounded-xl border border-white/5 hover:border-white/20 transition-all group flex items-center justify-between"
                           >
-                            <span className="text-zinc-400 group-hover:text-white font-bold transition-colors">{client}</span>
+                            <span className="text-xs md:text-sm text-zinc-400 group-hover:text-white font-bold transition-colors">{client}</span>
                             <div className="w-1.5 h-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: tier.color }}></div>
                           </motion.div>
                         ))}
@@ -170,41 +170,48 @@ const App: React.FC = () => {
         return activeSection === 'ai-architect' ? <AIArchitect /> : (
           <motion.div key="contact" {...pageTransition} className="pt-32 pb-24 px-6">
             <div className="max-w-7xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-20">
-                <div className="flex flex-col justify-center">
+              <div className="grid lg:grid-cols-2 gap-16 md:gap-20">
+                <div className="flex flex-col justify-center text-center lg:text-left">
                   <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-6 block">Operational HQ</span>
                   <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.8]">Let's <br/><span className="text-white/20">Forge</span></h1>
-                  <div className="space-y-12">
-                    <div className="glass-panel p-8 rounded-3xl border border-white/5">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#10b981] mb-4">India Hub</h4>
-                      <p className="text-2xl font-black leading-tight text-white mb-1">Bantwal Chambers, Baikampady</p>
-                      <p className="text-lg text-zinc-500 font-bold mb-4">Mangalore, Karnataka 575011</p>
-                      <a href="tel:+917259830339" className="text-xl font-bold text-zinc-300 hover:text-white">+91 72598 30339</a>
+                  <div className="space-y-8 md:space-y-12">
+                    <div className="glass-panel p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/5">
+                      <h4 className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#10b981] mb-4">India Hub</h4>
+                      <p className="text-xl md:text-2xl font-black leading-tight text-white mb-1">Bantwal Chambers, Baikampady</p>
+                      <p className="text-sm md:text-lg text-zinc-500 font-bold mb-4">Mangalore, Karnataka 575011</p>
+                      <a href="https://wa.me/917259830339" target="_blank" className="text-lg md:text-xl font-bold text-zinc-300 hover:text-white flex items-center justify-center lg:justify-start gap-2">
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.483 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.308 1.656zm6.29-4.139c1.52.907 3.0 1.352 4.619 1.353 5.504 0 9.982-4.479 9.984-9.985.002-5.507-4.475-9.985-9.982-9.987-2.68-.001-5.197 1.041-7.09 2.932-1.891 1.892-2.933 4.403-2.934 7.087-.001 1.706.469 3.126 1.391 4.509l-.989 3.613 3.701-.971c.001-.001.001-.001.001-.001z"/></svg>
+                        +91 72598 30339
+                      </a>
                     </div>
-                    <div className="glass-panel p-8 rounded-3xl border border-white/5">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#06b6d4] mb-4">KSA Relay</h4>
-                      <p className="text-2xl font-black leading-tight text-white mb-4">Regional Digital Lead</p>
-                      <a href="tel:+966575271327" className="text-xl font-bold text-zinc-300 hover:text-white">+966 57 527 1327</a>
+                    <div className="glass-panel p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/5">
+                      <h4 className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-[#06b6d4] mb-4">KSA Relay</h4>
+                      <p className="text-xl md:text-2xl font-black leading-tight text-white mb-1">Tahliyah Street, Al Aqiq</p>
+                      <p className="text-sm md:text-lg text-zinc-500 font-bold mb-4">Riyadh 13515</p>
+                      <a href="https://wa.me/966575271327" target="_blank" className="text-lg md:text-xl font-bold text-zinc-300 hover:text-white flex items-center justify-center lg:justify-start gap-2">
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.483 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.308 1.656zm6.29-4.139c1.52.907 3.0 1.352 4.619 1.353 5.504 0 9.982-4.479 9.984-9.985.002-5.507-4.475-9.985-9.982-9.987-2.68-.001-5.197 1.041-7.09 2.932-1.891 1.892-2.933 4.403-2.934 7.087-.001 1.706.469 3.126 1.391 4.509l-.989 3.613 3.701-.971c.001-.001.001-.001.001-.001z"/></svg>
+                        +966 57 527 1327
+                      </a>
                     </div>
                   </div>
                 </div>
                 
-                <div className="glass-panel p-12 rounded-[4rem] border border-white/5 relative bg-gradient-to-br from-white/[0.02] to-transparent">
-                  <h3 className="text-3xl font-black uppercase tracking-tighter mb-10">Transmission Forge</h3>
-                  <div className="space-y-10">
-                    <p className="text-zinc-400 font-medium">Ready to scale? Click below to launch our priority enquiry forge and connect with our sales engineers.</p>
+                <div className="glass-panel p-8 md:p-12 rounded-[2.5rem] md:rounded-[4rem] border border-white/5 relative bg-gradient-to-br from-white/[0.02] to-transparent">
+                  <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tighter mb-8 md:mb-10 text-center lg:text-left">Transmission Forge</h3>
+                  <div className="space-y-8 md:space-y-10 text-center lg:text-left">
+                    <p className="text-zinc-400 font-medium text-sm md:text-base">Ready to scale in 2026? Click below to launch our priority enquiry forge and connect with our sales engineers.</p>
                     <button 
                       onClick={() => setIsModalOpen(true)}
-                      className="w-full py-7 bg-[#10b981] text-black font-black uppercase tracking-widest rounded-3xl hover:bg-white transition-all shadow-[0_0_50px_rgba(16,185,129,0.3)] text-xl"
+                      className="w-full py-5 md:py-7 bg-[#10b981] text-black font-black uppercase tracking-widest rounded-2xl md:rounded-3xl hover:bg-white transition-all shadow-[0_0_50px_rgba(16,185,129,0.3)] text-lg md:text-xl"
                     >
                       Start Project Enquiry
                     </button>
-                    <div className="pt-10 border-t border-white/5">
-                      <h4 className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-4">Neural Relay Channels</h4>
-                      <div className="flex flex-col gap-3 font-bold">
-                        <a href="mailto:sayhello@bycomsolutions.com" className="hover:text-[#10b981] transition-colors">sayhello@bycomsolutions.com</a>
-                        <a href="mailto:sales@bycomsolutions.com" className="hover:text-[#10b981] transition-colors">sales@bycomsolutions.com</a>
-                        <a href="mailto:support@bycomsolutions.com" className="hover:text-purple-400 transition-colors">support@bycomsolutions.com</a>
+                    <div className="pt-8 md:pt-10 border-t border-white/5">
+                      <h4 className="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-4">Neural Relay Channels</h4>
+                      <div className="flex flex-col gap-3 font-bold text-xs md:text-base">
+                        <span className="hover:text-[#10b981] cursor-default transition-colors select-all">sayhello [at] bycomsolutions.com</span>
+                        <span className="hover:text-[#10b981] cursor-default transition-colors select-all">sales [at] bycomsolutions.com</span>
+                        <span className="hover:text-purple-400 cursor-default transition-colors select-all">support [at] bycomsolutions.com</span>
                       </div>
                     </div>
                   </div>
@@ -214,7 +221,7 @@ const App: React.FC = () => {
           </motion.div>
         );
       default:
-        return <Hero />;
+        return <Hero onOpenModal={() => setIsModalOpen(true)} />;
     }
   };
 

@@ -4,18 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bycom Solutions | Build Beyond Limits | AI & Software Engineering</title>
-    <meta name="description" content="Bycom Solutions is a leading digital agency specializing in Web & App Development, AI Solutions, Branding, and Software Integrations. Building high-performance ecosystems from India to KSA.">
-    <meta name="keywords" content="Software Development, AI Solutions, Web Design Mangalore, App Development Saudi Arabia, Branding, Digital Marketing, SEO, Bycom Solutions">
+    <title>Bycom Solutions | Build Beyond Limits | AI & Software Engineering 2026</title>
+    <meta name="description" content="Bycom Solutions is an elite digital engineering agency. Specializing in AI, App Development, and Software Integrations across India and KSA.">
+    <meta name="keywords" content="Software Development, AI Solutions, Web Design Mangalore, Riyadh Tech Agency, Branding, Digital Marketing, SEO, Bycom Solutions">
     <link rel="icon" type="image/png" href="https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png">
     <link rel="apple-touch-icon" href="https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png">
     
     <!-- Open Graph / SEO -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bycomsolutions.com/">
-    <meta property="og:title" content="Bycom Solutions | Beyond Computing">
+    <meta property="og:title" content="Bycom Solutions | Beyond Computing 2026">
     <meta property="og:description" content="Engineering high-frequency digital ecosystems. From Web Development to AI Automation.">
     <meta property="og:image" content="https://bycomsolutions.com/wp-content/uploads/2026/01/Asset-1@300x.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Bycom Solutions",
+      "url": "https://bycomsolutions.com",
+      "logo": "https://bycomsolutions.com/wp-content/uploads/2026/01/Asset-1@300x.png",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+91-7259830339",
+        "contactType": "sales",
+        "areaServed": ["IN", "SA"],
+        "availableLanguage": ["en", "ar", "hi"]
+      }],
+      "sameAs": [
+        "https://www.instagram.com/bycomsolutions",
+        "https://www.linkedin.com/company/bycomsolutions/",
+        "https://t.me/bycomsolutions"
+      ]
+    }
+    </script>
+
+    <!-- OneSignal SDK -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "YOUR_ONESIGNAL_APP_ID", // Placeholder: User should replace with actual ID
+          safari_web_id: "web.onesignal.auto.00000000-0000-0000-0000-000000000000",
+          notifyButton: { enable: true },
+        });
+      });
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -27,18 +72,14 @@
             overflow-x: hidden;
         }
         h1, h2, h3, .font-heading {
-            font-family: 'Space+Grotesk', sans-serif;
-        }
-        .glow-cyan {
-            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+            font-family: 'Space Grotesk', sans-serif;
         }
         .bg-mesh {
-            background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.15) 0, transparent 50%),
-                              radial-gradient(at 50% 0%, rgba(139, 92, 246, 0.1) 0, transparent 50%),
-                              radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.15) 0, transparent 50%);
+            background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.1) 0, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.05) 0, transparent 50%);
         }
         .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -47,14 +88,16 @@
             100% { transform: translateX(-50%); }
         }
         .animate-marquee {
-            animation: marquee 40s linear infinite;
+            animation: marquee 30s linear infinite;
+        }
+        @media (max-width: 768px) {
+            .animate-marquee {
+                animation: marquee 15s linear infinite;
+            }
         }
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
-        .prose-chat p { margin-bottom: 0.5rem; }
-        .prose-chat strong { color: #10b981; font-weight: 700; }
-        .prose-chat ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.5rem; }
     </style>
 <script type="importmap">
 {
@@ -66,8 +109,8 @@
     "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
     "framer-motion": "https://esm.sh/framer-motion@^11.15.0",
     "react-markdown": "https://esm.sh/react-markdown@^9.0.1",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^4.3.4",
-    "vite": "https://esm.sh/vite@^6.0.3"
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
