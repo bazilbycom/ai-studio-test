@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: Bycom/Bycom-Solutions-2026 # Ensure this matches your ACTUAL repo name
+  repo: bazilbycom/ai-studio-test # Ensure this matches your ACTUAL repo name
   branch: main
   # ⚠️ TO FIX THE REDIRECT:
   # Since you are not on Netlify, you need an "Auth Bridge".
