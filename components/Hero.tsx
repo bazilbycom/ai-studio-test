@@ -27,8 +27,7 @@ const ShootingStar = ({ delay, top, left }: { delay: number, top: string, left: 
 
 const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden h-screen w-full px-6 md:px-12">
-      {/* Enhanced Background Layers */}
+    <section className="relative flex items-center justify-center overflow-hidden h-screen w-full px-4 md:px-12">
       <div className="absolute inset-0 pointer-events-none z-0">
         <ShootingStar delay={0} top="10%" left="5%" />
         <ShootingStar delay={1.5} top="30%" left="15%" />
@@ -39,10 +38,9 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#10b981]/15 rounded-full blur-[160px] animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-[200px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-emerald-500/5 rounded-full blur-[220px]" />
       </div>
 
-      <div className="max-w-7xl relative z-10 w-full flex flex-col items-center justify-center text-center mx-auto">
+      <div className="max-w-screen-xl relative z-10 w-full flex flex-col items-center justify-center text-center mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,15 +54,15 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(4rem,9vw,10rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full max-w-[95vw] md:max-w-none mx-auto"
+          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(3.5rem,8.5vw,9.5rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full max-w-full mx-auto"
         >
           <span className="md:hidden block">
             <span className="block">Build</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow py-2">Beyond</span>
             <span className="block">Limits</span>
           </span>
-          <span className="hidden md:inline-block whitespace-nowrap">
-            Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow px-4">Beyond</span> Limits
+          <span className="hidden md:inline-block whitespace-nowrap px-4">
+            Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow px-2">Beyond</span> Limits
           </span>
         </motion.h1>
         
@@ -110,4 +108,5 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   );
 };
 
+// Added missing default export
 export default Hero;

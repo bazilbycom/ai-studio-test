@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -13,43 +14,26 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // --- BOT PROTECTION ---
     if (formData.hp.length > 0) return;
-
     setIsSubmitting(true);
     setStatus('waiting');
-    
     const googleFormUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScNEZXhMNXxAIT17fM4l5QkwRumU7Qx8TjstiluuxAWb6S1yA/formResponse";
-    const myWhatsAppNumber = "917259830339"; 
-
     const googlePayload = new FormData();
     googlePayload.append('entry.2005620554', formData.name);
     googlePayload.append('entry.1045781291', formData.email);
     googlePayload.append('entry.839337160', formData.message);
-
     try {
-      await fetch(googleFormUrl, {
-        method: "POST",
-        body: googlePayload,
-        mode: "no-cors"
-      });
-
+      await fetch(googleFormUrl, { method: "POST", body: googlePayload, mode: "no-cors" });
       setStatus('success');
-      
-      // --- PERSONALIZED MESSAGE FORMAT ---
       const waText = `Hi, Im ${formData.name} - ${formData.email}. ${formData.message}`;
-      const waUrl = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(waText)}`;
-      
+      const waUrl = `https://wa.me/917259830339?text=${encodeURIComponent(waText)}`;
       window.open(waUrl, '_blank');
-
       setTimeout(() => {
         onClose();
         setIsSubmitting(false);
         setStatus('idle');
         setFormData({ name: '', email: '', service: 'General Inquiry', message: '', hp: '' });
       }, 1500);
-
     } catch (err) {
       console.error("Submission error", err);
       setIsSubmitting(false);
@@ -62,7 +46,6 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="fixed inset-0 bg-black/98 backdrop-blur-xl" />
-          
           <motion.div 
             initial={{ scale: 0.9, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -75,7 +58,7 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
 
             <div className="mb-8 text-left">
               <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-2 leading-none text-white">Project <span className="text-[#10b981]">Enquiry</span></h2>
-              <p className="text-zinc-400 font-bold text-[9px] md:text-[10px] tracking-widest uppercase">Direct Engineering Consultation</p>
+              <p className="text-zinc-300 font-bold text-[9px] md:text-[10px] tracking-widest uppercase opacity-70">Direct Engineering Consultation</p>
             </div>
 
             <form onSubmit={handleSubmit} className={`space-y-4 md:space-y-5 ${status === 'waiting' ? 'opacity-50 pointer-events-none' : ''}`}>
@@ -83,18 +66,18 @@ const EnquiryModal: React.FC<EnquiryModalProps> = ({ isOpen, onClose }) => {
 
               <div className="space-y-4">
                 <div className="group">
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-[#10b981] mb-2 px-1">Your Identity</label>
-                  <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} type="text" className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all font-bold text-base text-white placeholder:text-zinc-500 shadow-inner" placeholder="Full Name / Company" />
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-white mb-2 px-1">Full Name / Company</label>
+                  <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} type="text" className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all font-bold text-base text-white placeholder:text-zinc-600 shadow-inner" placeholder="John Doe" />
                 </div>
                 <div className="group">
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-[#10b981] mb-2 px-1">Relay Address</label>
-                  <input required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} type="email" className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all font-bold text-base text-white placeholder:text-zinc-500 shadow-inner" placeholder="name@company.com" />
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-white mb-2 px-1">Email Address</label>
+                  <input required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} type="email" className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all font-bold text-base text-white placeholder:text-zinc-600 shadow-inner" placeholder="name@company.com" />
                 </div>
               </div>
 
               <div className="group">
-                <label className="block text-[10px] font-black uppercase tracking-widest text-[#10b981] mb-2 px-1">Mission Specs</label>
-                <textarea required value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} rows={4} className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all resize-none font-bold text-base text-white placeholder:text-zinc-500 shadow-inner" placeholder="Describe your project vision and goals..."></textarea>
+                <label className="block text-[10px] font-black uppercase tracking-widest text-white mb-2 px-1">How can we help?</label>
+                <textarea required value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} rows={4} className="w-full bg-white/[0.07] border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-5 focus:border-[#10b981] outline-none transition-all resize-none font-bold text-base text-white placeholder:text-zinc-600 shadow-inner" placeholder="Describe your vision and requirements..."></textarea>
               </div>
 
               <button 

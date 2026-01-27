@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -31,7 +32,7 @@ const Services: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {servicesData.map((s, idx) => (
             <motion.div key={idx} whileHover={{ y: -8 }} className="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-[#10b981]/40 transition-all flex flex-col h-full">
-              <span className="text-3xl font-black text-white/20 mb-6 block">{s.num}</span>
+              <span className="text-4xl font-black text-white/40 mb-6 block">{s.num}</span>
               <h3 className="text-xl font-black uppercase tracking-tighter mb-2 leading-tight">{s.title}</h3>
               <p className="text-[#10b981] text-[10px] font-bold uppercase tracking-widest mb-4">{s.subtitle}</p>
               <p className="text-zinc-500 text-xs leading-relaxed mb-6 flex-grow">{s.desc}</p>

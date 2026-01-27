@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -47,17 +48,16 @@ const Process: React.FC = () => {
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: false, margin: "-150px" }}
-              whileHover={{ scale: 1.02 }}
+              whileInView={{ opacity: 1, scale: 1.05 }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              viewport={{ once: false, margin: "-100px" }}
               className="relative group p-8 glass-panel rounded-3xl border border-white/5 hover:border-[#10b981]/20 transition-all duration-500 overflow-hidden"
             >
               <div 
                 className="text-7xl font-black mb-6 transition-all duration-700 select-none opacity-100 md:opacity-40 md:group-hover:opacity-100"
                 style={{ 
                   color: step.color,
-                  textShadow: `0 0 20px ${step.color}22`
+                  textShadow: `0 0 20px ${step.color}44`
                 }}
               >
                 {step.num}

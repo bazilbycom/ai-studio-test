@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Logo from './Logo';
 import { motion } from 'framer-motion';
@@ -21,17 +22,17 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex flex-col gap-6">
               <span className="text-[#10b981] font-black uppercase tracking-[0.4em] text-[10px]">Neural Relays</span>
-              <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {socials.map(s => (
                   <motion.a 
                     key={s.name} 
                     href={s.href} 
                     target="_blank" 
                     whileHover={{ scale: 1.05, color: '#10b981' }} 
-                    className="flex items-center justify-center gap-3 glass-panel border border-white/10 px-6 py-4 rounded-2xl text-zinc-400 group"
+                    className="flex items-center justify-center gap-3 glass-panel border border-white/10 px-4 py-4 rounded-2xl text-zinc-400 group"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d={s.icon}/></svg>
-                    <span className="text-[10px] font-black uppercase tracking-widest">{s.name}</span>
+                    <span className="text-[9px] font-black uppercase tracking-widest">{s.name}</span>
                   </motion.a>
                 ))}
               </div>
@@ -68,26 +69,26 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 py-12 border-t border-white/5">
-          <motion.div whileHover={{ y: -5 }} className="p-10 rounded-[2.5rem] glass-panel border border-white/5 relative group overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent">
-            <div className="absolute top-0 right-0 p-8 text-6xl font-black text-white/[0.03] select-none">IN</div>
+          <motion.div whileHover={{ y: -5 }} className="p-10 rounded-[2.5rem] glass-panel border border-white/5 relative group overflow-hidden bg-gradient-to-br from-[#10b981]/10 to-transparent">
+            <div className="absolute top-0 right-0 p-8 text-6xl font-black text-white/[0.03] select-none">NODE IN</div>
             <div className="relative z-10">
-              <span className="text-[9px] font-black uppercase tracking-widest text-[#10b981] mb-4 block">India Node</span>
+              <span className="text-[9px] font-black uppercase tracking-widest text-[#10b981] mb-4 block">Regional Hub / India</span>
               <p className="font-black text-2xl text-white mb-2 tracking-tight">Bantwal Chambers</p>
               <p className="text-zinc-500 font-bold italic text-sm tracking-tight mb-6">Mangalore, KA 575011</p>
               <div className="flex items-center gap-4">
-                 <div className="px-6 py-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] font-black text-[#10b981] shadow-inner">+91 72598 30339</div>
+                 <div className="px-6 py-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] font-black text-[#10b981] shadow-inner tracking-widest">+91 72598 30339</div>
               </div>
             </div>
           </motion.div>
 
-          <motion.div whileHover={{ y: -5 }} className="p-10 rounded-[2.5rem] glass-panel border border-white/5 relative group overflow-hidden bg-gradient-to-br from-white/[0.02] to-transparent">
-            <div className="absolute top-0 right-0 p-8 text-6xl font-black text-white/[0.03] select-none">KSA</div>
+          <motion.div whileHover={{ y: -5 }} className="p-10 rounded-[2.5rem] glass-panel border border-white/5 relative group overflow-hidden bg-gradient-to-br from-[#06b6d4]/10 to-transparent">
+            <div className="absolute top-0 right-0 p-8 text-6xl font-black text-white/[0.03] select-none">NODE KSA</div>
             <div className="relative z-10">
-              <span className="text-[9px] font-black uppercase tracking-widest text-[#06b6d4] mb-4 block">KSA Node</span>
+              <span className="text-[9px] font-black uppercase tracking-widest text-[#06b6d4] mb-4 block">Regional Hub / KSA</span>
               <p className="font-black text-2xl text-white mb-2 tracking-tight">Tahliyah St, Riyadh</p>
               <p className="text-zinc-500 font-bold italic text-sm tracking-tight mb-6">Al Aqiq 13515</p>
               <div className="flex items-center gap-4">
-                 <div className="px-6 py-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] font-black text-[#06b6d4] shadow-inner">+966 57 527 1327</div>
+                 <div className="px-6 py-3 bg-white/5 rounded-2xl border border-white/10 text-[11px] font-black text-[#06b6d4] shadow-inner tracking-widest">+966 57 527 1327</div>
               </div>
             </div>
           </motion.div>
