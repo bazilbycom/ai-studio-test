@@ -9,9 +9,10 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Added 'as const' to string literals to fix AnimationGeneratorType errors
   const menuVariants = {
-    closed: { opacity: 0, x: "100%", transition: { type: "spring", stiffness: 300, damping: 30 } },
-    opened: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300, damping: 30 } }
+    closed: { opacity: 0, x: "100%", transition: { type: "spring" as const, stiffness: 300, damping: 30 } },
+    opened: { opacity: 1, x: 0, transition: { type: "spring" as const, stiffness: 300, damping: 30 } }
   };
 
   const navLinks = [
