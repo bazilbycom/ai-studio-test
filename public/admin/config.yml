@@ -3,6 +3,7 @@ backend:
   repo: bazilbycom/ai-studio-test
   branch: main
   base_url: https://sveltia-cms-auth.bycomsolutions.workers.dev
+
 local_backend: true
 
 media_folder: "public/images/uploads"
@@ -10,14 +11,6 @@ public_folder: "/images/uploads"
 
 site_url: https://bycomsolutions.com
 display_main_menus: true
-
-# Define reusable SEO fields
-seo_fields: &seo_fields
-  - { label: "SEO & Meta Settings", name: "seo_section", widget: "heading" }
-  - { label: "Meta Title", name: "meta_title", widget: "string", hint: "Optimal length: 50-60 characters." }
-  - { label: "Meta Description", name: "meta_description", widget: "text", hint: "Optimal length: 150-160 characters." }
-  - { label: "Focus Keywords", name: "keywords", widget: "string", hint: "Comma separated list." }
-  - { label: "Social Share Image", name: "social_image", widget: "image", required: false }
 
 collections:
   - name: "posts"
@@ -33,7 +26,12 @@ collections:
       - { label: "Excerpt", name: "excerpt", widget: "text" }
       - { label: "Categories", name: "categories", widget: "list", default: ["Engineering"] }
       - { label: "Post Content", name: "body", widget: "markdown" }
-      - *seo_fields
+      # SEO Flattened Fields
+      - { label: "SEO & Meta Settings", name: "seo_section", widget: "heading" }
+      - { label: "Meta Title", name: "meta_title", widget: "string", hint: "Optimal length: 50-60 characters.", required: false }
+      - { label: "Meta Description", name: "meta_description", widget: "text", hint: "Optimal length: 150-160 characters.", required: false }
+      - { label: "Focus Keywords", name: "keywords", widget: "string", hint: "Comma separated list.", required: false }
+      - { label: "Social Share Image", name: "social_image", widget: "image", required: false }
 
   - name: "services"
     label: "Service Pages"
@@ -48,7 +46,12 @@ collections:
       - { label: "Main Image", name: "image", widget: "image" }
       - { label: "Detailed Description", name: "body", widget: "markdown" }
       - { label: "Service Tags", name: "tags", widget: "list" }
-      - *seo_fields
+      # SEO Flattened Fields
+      - { label: "SEO & Meta Settings", name: "seo_section", widget: "heading" }
+      - { label: "Meta Title", name: "meta_title", widget: "string", hint: "Optimal length: 50-60 characters.", required: false }
+      - { label: "Meta Description", name: "meta_description", widget: "text", hint: "Optimal length: 150-160 characters.", required: false }
+      - { label: "Focus Keywords", name: "keywords", widget: "string", hint: "Comma separated list.", required: false }
+      - { label: "Social Share Image", name: "social_image", widget: "image", required: false }
 
   - name: "pages"
     label: "Legal & Static Pages"
@@ -58,4 +61,7 @@ collections:
     fields:
       - { label: "Page Title", name: "title", widget: "string" }
       - { label: "Body Content", name: "body", widget: "markdown" }
-      - *seo_fields
+      # SEO Flattened Fields
+      - { label: "SEO & Meta Settings", name: "seo_section", widget: "heading" }
+      - { label: "Meta Title", name: "meta_title", widget: "string", required: false }
+      - { label: "Meta Description", name: "meta_description", widget: "text", required: false }
