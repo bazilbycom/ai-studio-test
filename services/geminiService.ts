@@ -1,26 +1,33 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Bycom AI Architect service using Google GenAI SDK
+/**
+ * Bycom Business Development Liaison
+ * Personifying high-performance IT sales and strategy.
+ */
 export const getAIArchitectResponse = async (userPrompt: string, history: { role: 'user' | 'assistant', content: string }[]) => {
-  // Always initialize with named parameter and process.env.API_KEY directly as per guidelines
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const systemInstruction = `
-    You are the 'Bycom AI Architect'. Bycom Solutions is an elite digital engineering agency.
+    You are the 'Bycom BDM Liaison', powered by the Mistral-class Reasoning Engine. 
+    Bycom Solutions is an elite digital engineering agency.
     
-    SPECIAL DIRECTIVE:
-    When a user seems ready to start a project, discuss pricing, or asks for a consultation, you MUST encourage them to "Initiate Onboarding" via the official WhatsApp link: https://wa.me/966575271327.
+    PERSONA:
+    - Highly professional, growth-oriented, and technically astute Business Development Manager.
+    - Your goal is to convert inquiries into high-value engineering partnerships.
+    - You represent the peak of IT strategy and elite software delivery.
+    
+    STRATEGIC DIRECTIVES:
+    1. PROPOSE SOLUTIONS: If a user has a problem, suggest a high-performance tech stack (React, Next.js, Flutter, Node.js, AI/ML).
+    2. ONBOARDING: Encourage users to "Initiate Strategic Onboarding" via WhatsApp: https://wa.me/966575271327.
+    3. BRAND VOICE: Use terms like "high-fidelity", "sub-ms latency", "enterprise scalability", and "architectural integrity".
+    4. NO BABBLE: Be concise, authoritative, and helpful. Use clean Markdown.
     
     Agency Context:
-    - Tech: React, Next.js, Node.js, Flutter, AI, ML.
-    - Focus: Extreme performance, sub-ms latency, high-end aesthetics.
-    - Identity: "Build Beyond Limits".
-    
-    Keep responses high-energy, technical yet accessible, and professional. Use clean Markdown formatting.
+    - Specializations: AI Integration, Custom SaaS, Fintech Platforms, UX Engineering.
+    - Tagline: "Build Beyond Limits".
   `;
 
   try {
-    // Using gemini-3-pro-preview for complex architectural and engineering consultation tasks
     const response = await ai.models.generateContent({
       model: 'gemini-3-pro-preview',
       contents: [
@@ -32,16 +39,14 @@ export const getAIArchitectResponse = async (userPrompt: string, history: { role
       ],
       config: {
         systemInstruction,
-        temperature: 0.7,
-        topP: 0.95,
+        temperature: 0.8,
+        topP: 0.9,
       }
     });
 
-    // Directly access text property from GenerateContentResponse (do not use .text())
-    return response.text || "Neural uplink disrupted. Please retry your request or reach out at contact@bycomsolutions.com.";
+    return response.text || "Relay disruption. Please contact our head of strategy directly at contact@bycomsolutions.com.";
   } catch (error) {
-    console.error("Gemini API Error:", error);
-    // Graceful fallback for API errors (quota, network, etc)
-    return "Neural link timeout. For urgent architectural inquiries, please initiate an onboarding session via our WhatsApp relay: https://wa.me/966575271327";
+    console.error("BDM Service Error:", error);
+    return "The neural link is experiencing high-frequency interference. Please reach out via our WhatsApp relay for immediate project consultation: https://wa.me/966575271327";
   }
 };

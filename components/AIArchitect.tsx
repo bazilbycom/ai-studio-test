@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
-import { getAIArchitectResponse } from '../services/geminiService';
+import { getMistralResponse } from '../services/aiService';
 import { Message } from '../types';
 
-const AIArchitect: React.FC = () => {
+const BDMManager: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hello! I'm the **Bycom AI Architect**. \n\nTell me about your project, and I'll help you draft the perfect tech strategy. \n- Web Ecosystems\n- Native Apps\n- AI Integrations" }
+    { role: 'assistant', content: "Systems online. I am your **Bycom BDM Liaison**.\n\nReady to engineer your digital dominance. How can we deploy our engineering units for your enterprise today?\n\n- Scale existing infrastructure\n- Build AI-native platforms\n- Modernize Fintech stacks" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -28,76 +28,77 @@ const AIArchitect: React.FC = () => {
     setIsLoading(true);
 
     try {
-      // Slicing at index 1 to skip the initial assistant greeting, 
-      // ensuring history starts with a 'user' role for the Gemini API.
-      const historyForAI = currentMessages.slice(1, -1);
-      const response = await getAIArchitectResponse(input, historyForAI);
+      const history = currentMessages.slice(0, -1) as { role: 'user' | 'assistant', content: string }[];
+      const response = await getMistralResponse(input, history);
       setMessages(prev => [...prev, { role: 'assistant', content: response }]);
     } catch (err) {
-      console.error("AI Architect UI Error:", err);
-      setMessages(prev => [...prev, { role: 'assistant', content: "Neural link timeout. Please verify your connection or contact support." }]);
+      console.error("BDM UI Error:", err);
+      setMessages(prev => [...prev, { role: 'assistant', content: "Liaison uplink timed out. Contacting manual relay..." }]);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <section id="ai-architect" className="pt-32 pb-24 px-6 bg-[#050505] relative overflow-hidden min-h-screen">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.05),transparent_70%)] pointer-events-none"></div>
-      
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+    <section id="bdm-liaison" className="py-24 px-6 relative z-10 min-h-screen flex items-center bg-transparent">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center w-full">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
         >
-          <span className="text-[#10b981] font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">AI Strategy Hub</span>
-          <h2 className="text-6xl md:text-8xl font-black mb-8 font-heading tracking-tighter uppercase leading-[0.9]">
-            The <span className="text-white/20">Digital</span> <br/>
-            Architect
+          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-[#10b981]/30 bg-[#10b981]/5 mb-8">
+             <div className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></div>
+             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#10b981]">Growth Strategist Active</span>
+          </div>
+          <h2 className="text-6xl md:text-8xl font-black mb-10 tracking-tighter uppercase leading-[0.85] text-white">
+            Mistral <br/><span className="text-white/20">Liaison</span>
           </h2>
-          <p className="text-zinc-400 text-xl mb-8 leading-relaxed font-medium">
-            Describe your project vision, and get an instant engineering blueprint. Our agent is trained on enterprise-grade architecture patterns.
+          <p className="text-zinc-200 text-xl md:text-2xl mb-12 leading-relaxed font-bold max-w-lg italic opacity-90">
+            "Your digital legacy isn't an accident—it's engineered. Let's draft your next-gen growth strategy today."
           </p>
-          <div className="flex gap-4">
-            <div className="px-6 py-4 glass-panel rounded-2xl border border-white/5 flex flex-col">
-              <span className="text-[#10b981] font-black text-2xl">V3.1</span>
-              <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest mt-1">Neural Core</span>
+          <div className="flex flex-wrap gap-4">
+            <div className="px-8 py-5 glass-panel rounded-3xl border border-white/10 flex flex-col bg-gradient-to-br from-emerald-500/10 to-transparent">
+              <span className="text-[#10b981] font-black text-3xl">BDM</span>
+              <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mt-2">Executive Lead</span>
             </div>
-            <div className="px-6 py-4 glass-panel rounded-2xl border border-white/5 flex flex-col">
-              <span className="text-purple-400 font-black text-2xl">4.0</span>
-              <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest mt-1">GPT Logic</span>
+            <div className="px-8 py-5 glass-panel rounded-3xl border border-white/10 flex flex-col bg-gradient-to-br from-purple-500/10 to-transparent">
+              <span className="text-purple-400 font-black text-3xl">M-L3</span>
+              <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mt-2">Mistral Core</span>
             </div>
           </div>
         </motion.div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-panel rounded-[3rem] h-[700px] flex flex-col overflow-hidden border border-white/10 shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="glass-panel rounded-[3.5rem] h-[750px] flex flex-col overflow-hidden border border-white/20 shadow-[0_50px_100px_rgba(16,185,129,0.15)] bg-black/40 backdrop-blur-3xl"
         >
-          <div className="bg-white/5 p-6 border-b border-white/10 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-2.5 h-2.5 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
-              <span className="text-[10px] font-black tracking-[0.2em] uppercase text-zinc-400">Arch-Node / KSA-IN-01</span>
+          <div className="bg-white/5 p-8 border-b border-white/10 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-3 h-3 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_15px_#10b981]"></div>
+              <span className="text-[11px] font-black tracking-[0.3em] uppercase text-zinc-200">STRATEGIC RELAY // BDM-BYCOM</span>
             </div>
+            <div className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">ENCRYPTED</div>
           </div>
 
-          <div ref={scrollRef} className="flex-1 overflow-y-auto p-8 space-y-8 scrollbar-hide">
+          <div ref={scrollRef} className="flex-1 overflow-y-auto p-10 space-y-10 scrollbar-hide">
             <AnimatePresence mode="popLayout">
               {messages.map((m, i) => (
                 <motion.div 
                   key={i}
-                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  initial={{ opacity: 0, x: m.role === 'user' ? 20 : -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div className={`max-w-[90%] px-6 py-5 rounded-[2rem] text-sm shadow-xl ${
+                  <div className={`max-w-[85%] px-8 py-6 rounded-[2.5rem] text-sm md:text-base shadow-2xl relative ${
                     m.role === 'user' 
-                      ? 'bg-[#10b981] text-black font-black' 
-                      : 'bg-white/5 border border-white/10 text-zinc-100'
+                      ? 'bg-gradient-to-r from-emerald-500 to-[#10b981] text-black font-black' 
+                      : 'bg-white/[0.07] border border-white/10 text-white font-semibold'
                   }`}>
                     {m.role === 'assistant' ? (
-                      <div className="prose-chat prose-invert max-w-none">
+                      <div className="prose prose-invert max-w-none prose-p:leading-relaxed prose-strong:text-[#10b981]">
                         <ReactMarkdown>{m.content}</ReactMarkdown>
                       </div>
                     ) : (
@@ -108,32 +109,32 @@ const AIArchitect: React.FC = () => {
               ))}
             </AnimatePresence>
             {isLoading && (
-              <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1.5 }} className="flex justify-start">
-                <div className="bg-white/5 border border-white/10 px-6 py-4 rounded-full flex gap-2 items-center">
-                  <div className="w-2 h-2 bg-[#10b981] rounded-full"></div>
-                  <div className="w-2 h-2 bg-[#10b981] rounded-full opacity-50"></div>
-                  <div className="w-2 h-2 bg-[#10b981] rounded-full opacity-20"></div>
+              <motion.div animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5 }} className="flex justify-start">
+                <div className="bg-white/10 border border-white/10 px-8 py-5 rounded-full flex gap-3 items-center">
+                  <div className="w-2.5 h-2.5 bg-[#10b981] rounded-full"></div>
+                  <div className="w-2.5 h-2.5 bg-zinc-500 rounded-full"></div>
+                  <div className="w-2.5 h-2.5 bg-zinc-700 rounded-full"></div>
                 </div>
               </motion.div>
             )}
           </div>
 
-          <div className="p-6 bg-black/40 backdrop-blur-md border-t border-white/10">
+          <div className="p-8 bg-black/60 backdrop-blur-3xl border-t border-white/10">
             <div className="relative">
               <input 
                 type="text" 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Describe your vision..."
-                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-5 text-base focus:outline-none focus:border-[#10b981] transition-all pr-16 placeholder:text-zinc-600 font-bold"
+                placeholder="Draft your mission Specs..."
+                className="w-full bg-white/[0.05] border border-white/10 rounded-3xl px-8 py-6 text-lg focus:outline-none focus:border-[#10b981] transition-all pr-20 placeholder:text-zinc-600 font-black text-white"
               />
               <button 
                 onClick={handleSend}
                 disabled={isLoading}
-                className="absolute right-3 top-3 h-12 w-12 bg-[#10b981] rounded-xl flex items-center justify-center text-black hover:bg-white transition-all disabled:opacity-50"
+                className="absolute right-4 top-4 h-14 w-14 bg-[#10b981] rounded-2xl flex items-center justify-center text-black hover:bg-white transition-all disabled:opacity-50 shadow-lg"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </button>
             </div>
           </div>
@@ -143,4 +144,4 @@ const AIArchitect: React.FC = () => {
   );
 };
 
-export default AIArchitect;
+export default BDMManager;
