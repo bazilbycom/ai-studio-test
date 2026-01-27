@@ -4,13 +4,48 @@
   "description": "Elite digital engineering agency specializing in AI, Software, and Design.",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#050505",
   "theme_color": "#10b981",
+  "categories": [
+    "business",
+    "productivity",
+    "technology"
+  ],
   "icons": [
     {
       "src": "https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "View Projects",
+      "url": "/#portfolio",
+      "icons": [
+        {
+          "src": "https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "AI Architect",
+      "url": "/#ai-architect",
+      "icons": [
+        {
+          "src": "https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
   "requestFramePermissions": [

@@ -1,18 +1,20 @@
 backend:
-  name: github
-  repo: your-username/your-repo-name # Path to your GitHub repo
-  branch: main # Branch to update
+  name: git-gateway
+  branch: main
 
-media_folder: "public/images" # Where images will be saved
-public_folder: "/images"
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "blog"
-    label: "Blog Post"
-    folder: "src/content/blog" # Where your markdown files will live
+    label: "Intelligence Reports"
+    folder: "content/blog"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Categories", name: "categories", widget: "list", default: ["Engineering"] }
       - { label: "Body", name: "body", widget: "markdown" }

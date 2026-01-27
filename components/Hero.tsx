@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -19,14 +18,14 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           className="inline-flex items-center gap-2 px-4 md:px-5 py-2 rounded-full border border-white/10 glass-panel mb-8 md:mb-12 text-[9px] md:text-[11px] font-black tracking-[0.2em] uppercase text-[#10b981] shadow-xl"
         >
           <span className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></span>
-           Core Servers Online
+          Elite Engineering Hub • Since 2017
         </motion.div>
         
         <motion.h1 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-8xl lg:text-[10rem] font-black mb-6 md:mb-10 leading-[1] md:leading-[0.85] tracking-tighter uppercase"
+          className="text-5xl md:text-8xl lg:text-[clamp(3rem,10vw,8rem)] font-black mb-6 md:mb-10 leading-[1] md:leading-[0.85] tracking-tighter uppercase"
         >
           Build <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#06b6d4] to-[#8b5cf6] text-glow">Beyond</span> Limits
         </motion.h1>
@@ -58,13 +57,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-lg mx-auto"
+          className="flex flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-2xl mx-auto px-4"
         >
           <motion.button 
             onClick={onOpenModal}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5 bg-[#10b981] text-black font-black uppercase tracking-widest rounded-2xl transition-all shadow-xl text-xs md:text-sm"
+            className="flex-1 md:flex-none px-6 md:px-12 py-4 md:py-5 bg-[#10b981] text-black font-black uppercase tracking-widest rounded-2xl transition-all shadow-xl text-[10px] md:text-sm whitespace-nowrap"
           >
             Initiate Onboarding
           </motion.button>
@@ -72,7 +71,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             href="#portfolio" 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full sm:w-auto px-10 md:px-12 py-4 md:py-5 border border-white/10 glass-panel font-black uppercase tracking-widest rounded-2xl transition-all text-xs md:text-sm"
+            className="flex-1 md:flex-none px-6 md:px-12 py-4 md:py-5 border border-white/10 glass-panel font-black uppercase tracking-widest rounded-2xl transition-all text-[10px] md:text-sm whitespace-nowrap text-center"
           >
             View Projects
           </motion.a>
@@ -88,7 +87,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         <img 
           src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
           alt="Future Architecture" 
-          className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-70 transition-all duration-[4000ms]"
+          className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-70 transition-all duration-700"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
         <div className="absolute inset-x-6 bottom-6 md:inset-x-12 md:bottom-12 z-20 flex flex-col md:flex-row justify-between items-end gap-8 text-left">

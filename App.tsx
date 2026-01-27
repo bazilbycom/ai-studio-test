@@ -7,6 +7,8 @@ import Process from './components/Process';
 import Footer from './components/Footer';
 import EnquiryModal from './components/EnquiryModal';
 import LegalPage from './components/LegalPage';
+import Blog from './components/Blog';
+import BlogPost from './components/BlogPost';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const portfolioClients = {
@@ -29,12 +31,21 @@ const portfolioClients = {
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [blogSlug, setBlogSlug] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
-      setActiveSection(hash);
+      
+      if (hash.startsWith('blog/')) {
+        setBlogSlug(hash.split('/')[1]);
+        setActiveSection('blog-post');
+      } else {
+        setBlogSlug(null);
+        setActiveSection(hash);
+      }
+      
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -55,7 +66,6 @@ const App: React.FC = () => {
     };
   }, []);
 
-  // Added 'as const' to string literals to fix Easing type errors
   const pageTransition = {
     initial: { opacity: 0, y: 10 },
     animate: { opacity: 1, y: 0 },
@@ -66,6 +76,14 @@ const App: React.FC = () => {
   const renderContent = () => {
     if (activeSection === 'privacy' || activeSection === 'terms' || activeSection === 'refunds') {
       return <LegalPage type={activeSection as any} />;
+    }
+
+    if (activeSection === 'blog') {
+      return <motion.div key="blog" {...pageTransition}><Blog /></motion.div>;
+    }
+
+    if (activeSection === 'blog-post' && blogSlug) {
+      return <motion.div key="blog-post" {...pageTransition}><BlogPost slug={blogSlug} /></motion.div>;
     }
 
     switch (activeSection) {
