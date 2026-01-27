@@ -9,9 +9,24 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   return (
     <section className="relative pt-24 md:pt-44 pb-12 md:pb-24 px-4 md:px-6 flex flex-col items-center text-center overflow-hidden">
       {/* Dynamic Background Effects */}
-      <div className="absolute top-0 -left-20 w-72 md:w-full h-[600px] bg-[#10b981]/10 blur-[150px] pointer-events-none animate-pulse"></div>
-      <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] bg-purple-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute top-0 -left-20 w-72 md:w-full h-[800px] bg-[#10b981]/15 blur-[160px] pointer-events-none animate-pulse-slow"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-purple-500/10 blur-[150px] rounded-full pointer-events-none"></div>
       
+      {/* Animated Dot Grid (Local to Hero) */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+        <motion.div 
+          animate={{ 
+            backgroundPosition: ["0px 0px", "60px 60px"],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="w-[200%] h-[200%] -top-[50%] -left-[50%]"
+          style={{ 
+            backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', 
+            backgroundSize: '30px 30px' 
+          }}
+        />
+      </div>
+
       <div className="max-w-6xl relative z-10 px-2">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
@@ -39,7 +54,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           transition={{ delay: 0.3 }}
           className="flex justify-center mb-8"
         >
-          <div className="px-5 py-2 rounded-full border border-yellow-500/20 bg-yellow-500/5 flex items-center gap-2 backdrop-blur-sm">
+          <div className="px-5 py-2 rounded-full border border-yellow-500/20 bg-yellow-500/5 flex items-center gap-2 backdrop-blur-sm shadow-2xl">
             <span className="text-yellow-400 text-[9px] md:text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5">
               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               Top 10 Rated Paid Apps in India
@@ -64,7 +79,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         >
           <motion.button 
             onClick={onOpenModal}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(16, 185, 129, 0.4)" }}
             whileTap={{ scale: 0.95 }}
             className="flex-1 md:flex-none px-6 md:px-12 py-4 md:py-5 bg-[#10b981] text-black font-black uppercase tracking-widest rounded-2xl transition-all shadow-xl text-[10px] md:text-sm whitespace-nowrap"
           >
@@ -72,7 +87,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           </motion.button>
           <motion.a 
             href="#portfolio" 
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.05)" }}
             whileTap={{ scale: 0.95 }}
             className="flex-1 md:flex-none px-6 md:px-12 py-4 md:py-5 border border-white/10 glass-panel font-black uppercase tracking-widest rounded-2xl transition-all text-[10px] md:text-sm whitespace-nowrap text-center"
           >
@@ -85,14 +100,14 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.8 }}
-        className="mt-16 md:mt-28 w-full max-w-7xl glass-panel rounded-3xl md:rounded-[4rem] overflow-hidden aspect-[1/1] sm:aspect-[21/9] relative group border border-white/5 shadow-2xl"
+        className="mt-16 md:mt-28 w-full max-w-7xl glass-panel rounded-3xl md:rounded-[4rem] overflow-hidden aspect-[1/1] sm:aspect-[21/9] relative group border border-white/5 shadow-[0_40px_100px_rgba(0,0,0,0.6)]"
       >
         <img 
           src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
           alt="Future Architecture" 
-          className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-70 transition-all duration-700"
+          className="w-full h-full object-cover grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-70 group-hover:scale-105 transition-all duration-1000"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
         <div className="absolute inset-x-6 bottom-6 md:inset-x-12 md:bottom-12 z-20 flex flex-col md:flex-row justify-between items-end gap-8 text-left">
           <div className="w-full md:max-w-xl">
             <span className="text-[#10b981] font-black text-[9px] md:text-xs uppercase tracking-[0.4em] mb-4 block">Proven Operations Matrix</span>
@@ -100,11 +115,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             <p className="text-zinc-400 font-bold text-xs md:text-lg">Specializing in AI-native architecture and extreme-scale software engineering.</p>
           </div>
           <div className="flex gap-3 md:gap-6 w-full md:w-auto">
-             <div className="px-6 py-4 md:px-10 md:py-6 rounded-2xl glass-panel border border-white/5 flex flex-col items-center flex-1">
+             <div className="px-6 py-4 md:px-10 md:py-6 rounded-2xl glass-panel border border-white/5 flex flex-col items-center flex-1 backdrop-blur-md">
                 <span className="text-[#10b981] font-black text-2xl md:text-4xl tracking-tighter">80+</span>
                 <span className="text-[7px] md:text-[9px] font-black text-zinc-500 uppercase tracking-widest mt-2">Clients</span>
              </div>
-             <div className="px-6 py-4 md:px-10 md:py-6 rounded-2xl glass-panel border border-white/5 flex flex-col items-center flex-1">
+             <div className="px-6 py-4 md:px-10 md:py-6 rounded-2xl glass-panel border border-white/5 flex flex-col items-center flex-1 backdrop-blur-md">
                 <span className="text-purple-400 font-black text-2xl md:text-4xl tracking-tighter">&lt;5ms</span>
                 <span className="text-[7px] md:text-[9px] font-black text-zinc-500 uppercase tracking-widest mt-2">Latency</span>
              </div>

@@ -39,7 +39,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #050505;
+            background-color: #030303;
             color: #ffffff;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -48,8 +48,15 @@
             font-family: 'Space Grotesk', sans-serif;
         }
         .bg-mesh {
-            background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0, transparent 50%),
-                              radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.04) 0, transparent 50%);
+            background-image: 
+              radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.1) 0, transparent 40%),
+              radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0, transparent 40%),
+              radial-gradient(at 50% 50%, rgba(5, 5, 5, 1) 0, transparent 100%);
+        }
+        .neural-grid {
+            background-image: radial-gradient(rgba(16, 185, 129, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+            mask-image: linear-gradient(to bottom, transparent, black, transparent);
         }
         .glass-panel {
             background: rgba(255, 255, 255, 0.02);
@@ -60,19 +67,19 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        /* Ultra fast marquee for that high-performance feel */
         .animate-marquee {
             animation: marquee 12s linear infinite;
         }
-        @media (max-width: 768px) {
-            .animate-marquee {
-                animation: marquee 6s linear infinite;
-            }
+        @keyframes pulse-bg {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-bg 8s ease-in-out infinite;
         }
         .text-glow {
             text-shadow: 0 0 40px rgba(16, 185, 129, 0.5);
         }
-        /* Mobile-first font optimizations */
         @media (max-width: 640px) {
           h1 { font-size: 3.5rem !important; line-height: 0.9 !important; }
           .hero-p { font-size: 1rem !important; }
@@ -95,7 +102,8 @@
 }
 </script>
 </head>
-<body class="bg-mesh min-h-screen">
+<body class="bg-mesh min-h-screen relative">
+    <div class="fixed inset-0 neural-grid pointer-events-none opacity-20"></div>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
     <script>

@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bycom | Intelligence CMS</title>
   <link rel="icon" type="image/png" href="https://bycomsolutions.com/wp-content/uploads/2026/01/cropped-Asset-15@300x-192x192.png">
-  <!-- Force Decap to look at the correct local config path -->
+  <!-- Force path to config -->
   <link href="config.yml" type="text/yaml" rel="cms-config-url">
 </head>
 <body>
+  <!-- Decap CMS relies on GitHub OAuth for login when not using Netlify -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
