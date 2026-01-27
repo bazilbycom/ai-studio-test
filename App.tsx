@@ -108,20 +108,20 @@ const App: React.FC = () => {
           <motion.div key="home" {...pageTransition}>
             <Hero onOpenModal={() => setIsModalOpen(true)} />
             
-            <section className="h-screen max-h-[900px] flex flex-col items-center justify-center bg-black relative overflow-hidden py-8">
-               <div className="max-w-7xl mx-auto w-full px-6 flex flex-col gap-8 h-full justify-center">
+            <section className="h-screen max-h-[850px] flex flex-col items-center justify-center bg-black relative overflow-hidden py-4">
+               <div className="max-w-7xl mx-auto w-full px-6 flex flex-col gap-6 h-full justify-center">
                  <motion.div 
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
+                   initial={{ opacity: 0, scale: 0.98 }}
+                   whileInView={{ opacity: 1, scale: 1 }}
                    viewport={{ once: true }}
                    className="w-full glass-panel rounded-[3rem] overflow-hidden aspect-[21/9] md:aspect-[21/8] relative border border-white/5 shadow-[0_0_80px_rgba(16,185,129,0.1)]"
                  >
                    <motion.img 
                      src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
-                     alt="Beyond Computing Global View" 
+                     alt="Global Engineering Nodes" 
                      className="w-full h-full object-cover"
                      animate={{ 
-                       filter: ["grayscale(100%) opacity(0.2)", "grayscale(0%) opacity(0.7)", "grayscale(100%) opacity(0.2)"],
+                       filter: ["grayscale(100%) opacity(0.1)", "grayscale(0%) opacity(0.6)", "grayscale(100%) opacity(0.1)"],
                      }}
                      transition={{ 
                        duration: 1.5, 
@@ -130,38 +130,38 @@ const App: React.FC = () => {
                        ease: "easeInOut"
                      }}
                    />
-                   <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-transparent to-transparent"></div>
-                   <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-                     <div className="grid md:grid-cols-3 gap-8 items-end">
+                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                   <div className="absolute inset-0 p-8 md:p-14 flex flex-col justify-end">
+                     <div className="grid md:grid-cols-3 gap-10 items-end">
                        <div className="text-left">
-                         <span className="text-[#10b981] font-black text-[9px] uppercase tracking-[0.6em] mb-2 block">Engine Hubs</span>
-                         <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none">Global <br/>Nodes</h3>
-                         <div className="flex items-center gap-3 mt-3">
+                         <span className="text-[#10b981] font-black text-[9px] uppercase tracking-[0.6em] mb-3 block">Network Nodes</span>
+                         <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-none">Global <br/>Status</h3>
+                         <div className="flex items-center gap-3 mt-4">
                            <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></div>
-                           <span className="text-[9px] font-black uppercase text-zinc-500 tracking-widest">Neural Link: Synchronized</span>
+                           <span className="text-[9px] font-black uppercase text-zinc-500 tracking-widest">Systems: Operational</span>
                          </div>
                        </div>
-                       <div className="text-left border-l border-white/10 pl-8 hidden md:block">
-                         <span className="text-purple-400 font-black text-[9px] uppercase tracking-[0.6em] mb-2 block">Speed Protocol</span>
-                         <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none">&lt; 20ms</h3>
-                         <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mt-1">Edge Deployment Latency</p>
+                       <div className="text-left border-l border-white/10 pl-10 hidden md:block">
+                         <span className="text-purple-400 font-black text-[9px] uppercase tracking-[0.6em] mb-3 block">Performance</span>
+                         <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none">&lt; 15ms</h3>
+                         <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mt-2">Avg. Response Time</p>
                        </div>
-                       <div className="text-left border-l border-white/10 pl-8 hidden md:block">
-                         <span className="text-cyan-400 font-black text-[9px] uppercase tracking-[0.6em] mb-2 block">Legacy Apex</span>
-                         <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none">08 Years</h3>
-                         <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mt-1">Deep Engineering Mastery</p>
+                       <div className="text-left border-l border-white/10 pl-10 hidden md:block">
+                         <span className="text-cyan-400 font-black text-[9px] uppercase tracking-[0.6em] mb-3 block">Integrations</span>
+                         <h3 className="text-3xl lg:text-4xl font-black uppercase tracking-tighter leading-none">450+</h3>
+                         <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mt-2">Successful Uplinks</p>
                        </div>
                      </div>
                    </div>
                  </motion.div>
 
-                 <div className="w-full border-y border-white/5 bg-white/5 rounded-2xl py-8 overflow-hidden">
+                 <div className="w-full border-y border-white/5 bg-white/[0.02] rounded-3xl py-10 overflow-hidden">
                     <div className="flex animate-marquee whitespace-nowrap">
                       {[...Array(6)].map((_, i) => (
-                        <div key={i} className="flex items-center gap-10 md:gap-24 mx-8 md:mx-20">
-                          <span className="text-xl md:text-3xl font-black text-white/20 uppercase tracking-tighter">Bycom Logic Unit</span>
-                          <span className="w-2 h-2 bg-[#10b981] rounded-full shadow-[0_0_10px_#10b981]"></span>
-                          <span className="text-xl md:text-3xl font-black text-white/20 uppercase tracking-tighter">Extreme Performance</span>
+                        <div key={i} className="flex items-center gap-12 md:gap-24 mx-8 md:mx-20">
+                          <span className="text-xl md:text-2xl font-black text-white/10 uppercase tracking-tighter">Bycom Solutions Lab</span>
+                          <span className="w-2 h-2 bg-[#10b981] rounded-full opacity-40"></span>
+                          <span className="text-xl md:text-2xl font-black text-white/10 uppercase tracking-tighter">Scale Beyond limits</span>
                         </div>
                       ))}
                     </div>
@@ -171,50 +171,33 @@ const App: React.FC = () => {
 
             <Services />
             <Process />
-            <AIArchitect />
             
-            {/* Condensed Global Archive Homepage Section */}
-            <section className="py-24 px-6 bg-[#080808] border-t border-white/5 relative overflow-hidden">
+            {/* Core Capabilities - Replaces Global Archive on Home */}
+            <section className="py-32 px-6 bg-[#030303] border-t border-white/5 relative overflow-hidden">
               <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col lg:flex-row justify-between items-start mb-16 gap-8">
-                  <div className="max-w-xl">
-                    <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-4 block">Fleet Summary</span>
-                    <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 leading-[0.8]">Global <span className="text-white/10">Archive</span></h2>
-                    <p className="text-zinc-500 text-lg font-medium max-w-sm">80+ deployments powered by Bycom. Exploring the next frontier of digital high-performance.</p>
-                  </div>
-                  <button onClick={() => window.location.hash = 'portfolio'} className="group px-8 py-4 bg-white/5 border border-white/10 rounded-2xl flex items-center gap-4 hover:bg-white hover:text-black transition-all">
-                    <span className="text-[10px] font-black uppercase tracking-widest">Explore Full Matrix</span>
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </button>
+                <div className="text-center mb-24">
+                  <span className="text-[#10b981] font-black uppercase tracking-[0.6em] text-[10px] mb-6 block">Strategic Units</span>
+                  <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none">Core <br/><span className="text-white/10">Specializations</span></h2>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6">
-                  {Object.entries(portfolioClients).map(([key, data]) => (
-                    <motion.div 
-                      key={key}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      className={`glass-panel p-1 rounded-[2.5rem] bg-gradient-to-br ${data.color} opacity-90 group relative overflow-hidden h-48`}
-                    >
-                      <div className="bg-black w-full h-full rounded-[2.4rem] p-8 flex flex-col justify-between relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                           <div className="text-6xl font-black text-white">{data.id.split('-')[1]}</div>
-                        </div>
-                        <div>
-                          <span className="text-[9px] font-black uppercase tracking-widest text-zinc-500 mb-1 block">Sector Alpha-01</span>
-                          <h3 className="text-xl font-black uppercase tracking-tighter text-white">{data.label}</h3>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-bold text-zinc-400 italic">{data.clients.length} Active Nodes</span>
-                          <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
-                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" /></svg>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {[
+                    { title: "Fintech Engines", desc: "High-frequency trading platforms and secure banking middleware.", icon: "🏦" },
+                    { title: "AI Integration", desc: "LLM fine-tuning and proprietary neural layers for automation.", icon: "🧠" },
+                    { title: "Scale SaaS", desc: "Multi-tenant cloud architectures for global software distribution.", icon: "☁️" },
+                    { title: "UX Engineering", desc: "Extreme-performance interfaces with sub-millisecond interactivity.", icon: "✨" }
+                  ].map((unit, i) => (
+                    <div key={i} className="glass-panel p-10 rounded-[2.5rem] border border-white/5 hover:border-[#10b981]/20 transition-all duration-500 group">
+                      <div className="text-4xl mb-8 group-hover:scale-110 transition-transform duration-500">{unit.icon}</div>
+                      <h3 className="text-xl font-black uppercase tracking-tighter mb-4 text-white group-hover:text-[#10b981] transition-colors">{unit.title}</h3>
+                      <p className="text-zinc-500 text-sm leading-relaxed font-medium">{unit.desc}</p>
+                    </div>
                   ))}
                 </div>
               </div>
             </section>
+
+            <AIArchitect />
           </motion.div>
         );
       case 'services':
@@ -273,29 +256,38 @@ const App: React.FC = () => {
                 <div className="flex flex-col justify-center">
                   <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-6 block">Regional Hubs</span>
                   <h1 className="text-7xl md:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.8]">Let's <br/><span className="text-white/20">Forge</span></h1>
+                  
+                  {/* Address Section Exclusively on Contact Page */}
                   <div className="space-y-10">
-                    <div className="glass-panel p-10 rounded-3xl border border-white/5">
-                      <div className="flex items-center justify-between mb-4">
-                        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#10b981]">India Node</h4>
-                        <span className="text-2xl">🇮🇳</span>
+                    <div className="glass-panel p-10 rounded-[2.5rem] border border-white/5 relative group overflow-hidden">
+                      <div className="absolute top-0 right-0 p-8 text-4xl opacity-20">🇮🇳</div>
+                      <div className="relative z-10">
+                        <span className="text-[9px] font-black uppercase tracking-widest text-[#10b981] mb-4 block">India Node</span>
+                        <p className="font-black text-2xl text-white mb-2">Bantwal Chambers</p>
+                        <p className="text-zinc-500 font-bold italic text-sm tracking-tight mb-6">Mangalore, KA 575011</p>
+                        <div className="flex items-center gap-4">
+                           <div className="px-5 py-2.5 bg-white/5 rounded-xl border border-white/10 text-[11px] font-black">+91 72598 30339</div>
+                        </div>
                       </div>
-                      <p className="text-3xl font-black text-white mb-2">Bantwal Chambers</p>
-                      <p className="text-lg text-zinc-500 font-bold italic tracking-tight">Mangalore, KA 575011</p>
                     </div>
-                    <div className="glass-panel p-10 rounded-3xl border border-white/5">
-                      <div className="flex items-center justify-between mb-4">
-                        <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#06b6d4]">KSA Node</h4>
-                        <span className="text-2xl">🇸🇦</span>
+                    <div className="glass-panel p-10 rounded-[2.5rem] border border-white/5 relative group overflow-hidden">
+                      <div className="absolute top-0 right-0 p-8 text-4xl opacity-20">🇸🇦</div>
+                      <div className="relative z-10">
+                        <span className="text-[9px] font-black uppercase tracking-widest text-[#06b6d4] mb-4 block">KSA Node</span>
+                        <p className="font-black text-2xl text-white mb-2">Tahliyah St, Riyadh</p>
+                        <p className="text-zinc-500 font-bold italic text-sm tracking-tight mb-6">Al Aqiq 13515</p>
+                        <div className="flex items-center gap-4">
+                           <div className="px-5 py-2.5 bg-white/5 rounded-xl border border-white/10 text-[11px] font-black">+966 57 527 1327</div>
+                        </div>
                       </div>
-                      <p className="text-3xl font-black text-white mb-2">Tahliyah St, Riyadh</p>
-                      <p className="text-lg text-zinc-500 font-bold italic tracking-tight">Al Aqiq 13515</p>
                     </div>
                   </div>
                 </div>
+                
                 <div className="glass-panel p-16 rounded-[4rem] border border-white/10 flex flex-col items-center justify-center text-center">
                   <h3 className="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Initiate <br/>Protocol</h3>
                   <p className="text-zinc-400 font-medium text-xl mb-12 max-w-sm leading-relaxed">Ready to deploy your next high-performance asset?</p>
-                  <button onClick={() => setIsModalOpen(true)} className="w-full max-w-sm py-6 bg-[#10b981] text-black font-black uppercase tracking-[0.3em] rounded-3xl hover:bg-white transition-all text-xl">Start Mission</button>
+                  <button onClick={() => setIsModalOpen(true)} className="w-full max-w-sm py-6 bg-[#10b981] text-black font-black uppercase tracking-[0.3em] rounded-3xl hover:bg-white transition-all text-xl shadow-2xl">Start Transmission</button>
                   <div className="mt-12 pt-10 border-t border-white/5 w-full">
                     <p className="font-black text-xl text-zinc-500 italic">sayhello [at] bycomsolutions.com</p>
                   </div>
@@ -315,9 +307,11 @@ const App: React.FC = () => {
       <main className="relative z-10"><AnimatePresence mode="wait">{renderContent()}</AnimatePresence></main>
       <Footer />
       <EnquiryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      
+      {/* Background Optimized for performance */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(16,185,129,0.08),transparent_40%)]"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.04]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(16,185,129,0.04),transparent_50%)]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02]"></div>
       </div>
     </div>
   );
