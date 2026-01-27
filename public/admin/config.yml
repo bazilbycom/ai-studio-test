@@ -1,6 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: your-github-username/your-repo-name # Replace with your actual repo
   branch: main
+  base_url: https://your-oauth-proxy.com # Set up a proxy for GitHub OAuth if needed
+
+local_backend: true # Allows local editing via npx decap-server
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"

@@ -8,8 +8,9 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   return (
     <section className="relative pt-24 md:pt-44 pb-12 md:pb-24 px-4 md:px-6 flex flex-col items-center text-center overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-0 -left-20 w-72 md:w-full h-[600px] bg-[#10b981]/5 blur-[150px] pointer-events-none"></div>
+      {/* Dynamic Background Effects */}
+      <div className="absolute top-0 -left-20 w-72 md:w-full h-[600px] bg-[#10b981]/10 blur-[150px] pointer-events-none animate-pulse"></div>
+      <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] bg-purple-500/5 blur-[120px] rounded-full pointer-events-none"></div>
       
       <div className="max-w-6xl relative z-10 px-2">
         <motion.div 
@@ -24,11 +25,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         <motion.h1 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[clamp(3rem,10vw,8rem)] font-black mb-6 md:mb-10 leading-[1] sm:leading-[0.85] tracking-tighter uppercase flex flex-col items-center sm:block"
+          transition={{ duration: 0.8, ease: "circOut" }}
+          className="text-[12vw] sm:text-7xl md:text-8xl lg:text-[clamp(3rem,10vw,8rem)] font-black mb-6 md:mb-10 leading-[0.85] tracking-tighter uppercase flex flex-col items-center sm:block"
         >
           <span className="block sm:inline">Build</span> 
-          <span className="block sm:inline sm:mx-4 text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#06b6d4] to-[#8b5cf6] text-glow">Beyond</span> 
+          <span className="block sm:inline sm:mx-4 text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#06b6d4] to-[#8b5cf6] text-glow animate-gradient-x">Beyond</span> 
           <span className="block sm:inline">Limits</span>
         </motion.h1>
         
