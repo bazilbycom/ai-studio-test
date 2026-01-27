@@ -76,15 +76,15 @@ const Hero: React.FC = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 pointer-events-none"></div>
         <img 
-          src="https://images.unsplash.com/photo-1550741113-5744f4ed33f7?auto=format&fit=crop&q=80&w=1600" 
-          alt="Future Tech" 
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
+          alt="Future Tech Architecture" 
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[3000ms] opacity-50 grayscale hover:grayscale-0 transition-all"
         />
         <div className="absolute bottom-12 left-12 right-12 z-20 flex flex-col md:flex-row justify-between items-end gap-8">
           <div className="text-left">
-            <span className="text-[#10b981] font-black text-xs uppercase tracking-[0.4em] mb-3 block">Deployment: Omega-7</span>
-            <h3 className="text-4xl font-black uppercase tracking-tighter leading-none mb-2">Neural Hub Architecture</h3>
-            <p className="text-zinc-500 max-w-md font-bold">Scaling global commerce through sub-10ms edge compute nodes.</p>
+            <span className="text-[#10b981] font-black text-xs uppercase tracking-[0.4em] mb-3 block">Node Deployment: X-22</span>
+            <h3 className="text-4xl font-black uppercase tracking-tighter leading-none mb-2">Omni-Channel <br/>Grid Sync</h3>
+            <p className="text-zinc-500 max-w-md font-bold">Scaling global commerce through sub-10ms edge compute clusters.</p>
           </div>
           <div className="flex gap-4">
              <div className="px-8 py-4 rounded-2xl glass-panel border border-white/5 flex flex-col items-center min-w-[120px]">
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
                 <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest mt-1">SLA Uptime</span>
              </div>
              <div className="px-8 py-4 rounded-2xl glass-panel border border-white/5 flex flex-col items-center min-w-[120px]">
-                <span className="text-purple-400 font-black text-2xl tracking-tighter">&lt;15ms</span>
+                <span className="text-purple-400 font-black text-2xl tracking-tighter">&lt;10ms</span>
                 <span className="text-[9px] font-bold text-zinc-500 uppercase tracking-widest mt-1">Latency</span>
              </div>
           </div>

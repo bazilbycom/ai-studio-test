@@ -1,109 +1,120 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ServiceCardProps } from '../types';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
+const servicesData = [
+  {
+    num: "01",
+    title: "Web & App Development",
+    subtitle: "Smart, scalable, and built to perform.",
+    desc: "From custom websites to enterprise-grade web apps, our code is fast, secure, and built to scale with your vision.",
+    tags: ["Next.js", "Flutter", "React", "Node"]
+  },
+  {
+    num: "02",
+    title: "Design & Branding",
+    subtitle: "Design that speaks, brands that stay.",
+    desc: "We help businesses shape visual identities that inspire trust and engagement — because great design isn’t decoration, it’s communication.",
+    tags: ["UI/UX", "Logos", "Identity", "Motion"]
+  },
+  {
+    num: "03",
+    title: "Audio, Animation & Media Production",
+    subtitle: "Where creativity meets sound and motion.",
+    desc: "From podcasts to promotional videos — we craft stories that move people through stylized visual art and sound design.",
+    tags: ["Podcasts", "Video", "VFX", "Audio"]
+  },
+  {
+    num: "04",
+    title: "Digital Marketing & SEO",
+    subtitle: "Visibility that drives growth.",
+    desc: "We combine performance marketing with data-driven insights to make sure your brand reaches the right audience — and converts.",
+    tags: ["SEM", "Rankings", "Ads", "SMM"]
+  },
+  {
+    num: "05",
+    title: "Brand Strategy & Consulting",
+    subtitle: "Ideas with direction. Strategies with substance.",
+    desc: "Our consulting team bridges creativity, technology, and business thinking to guide your brand’s long-term digital evolution.",
+    tags: ["Consulting", "Roadmaps", "Audit"]
+  },
+  {
+    num: "06",
+    title: "AI & Automation Solutions",
+    subtitle: "Let technology work while you focus.",
+    desc: "We integrate AI and automation tools that simplify workflows, improve accuracy, and scale operations effortlessly.",
+    tags: ["LLMs", "Bots", "Pipelines", "Python"]
+  },
+  {
+    num: "07",
+    title: "Software Development & Integrations",
+    subtitle: "Systems that empower your business.",
+    desc: "From startups to enterprise systems, we develop software that adapts to your business goals — not the other way around.",
+    tags: ["SaaS", "APIs", "Database", "AWS"]
+  },
+  {
+    num: "08",
+    title: "Hosting, Maintenance & Support",
+    subtitle: "Always online. Always optimized.",
+    desc: "We monitor, maintain, and upgrade your digital assets for security, performance, and 24/7 uptime reliability.",
+    tags: ["Cloud", "Security", "DevOps", "SSL"]
   }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
-};
-
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, description, icon, tags }) => (
-  <motion.div 
-    variants={itemVariants}
-    whileHover={{ y: -8, transition: { duration: 0.2 } }}
-    className="glass-panel p-8 rounded-3xl border border-white/5 hover:border-cyan-500/50 transition-all group cursor-default relative overflow-hidden"
-  >
-    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/5 transition-all duration-500"></div>
-    <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-black transition-all relative z-10 shadow-[0_0_20px_rgba(6,182,212,0)] group-hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-      {icon}
-    </div>
-    <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter relative z-10">{title}</h3>
-    <p className="text-zinc-400 text-sm mb-6 leading-relaxed relative z-10">{description}</p>
-    <div className="flex flex-wrap gap-2 relative z-10">
-      {tags.map(tag => (
-        <span key={tag} className="text-[10px] font-bold tracking-widest uppercase px-2 py-1 rounded bg-white/5 text-zinc-300 border border-white/5 group-hover:border-cyan-500/30 transition-colors">
-          {tag}
-        </span>
-      ))}
-    </div>
-  </motion.div>
-);
+];
 
 const Services: React.FC = () => {
-  const servicesData: ServiceCardProps[] = [
-    {
-      title: "App Engineering",
-      description: "Crafting fluid, native experiences across iOS and Android with battle-tested architectures.",
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
-      tags: ["Flutter", "React Native", "Swift", "Kotlin"]
-    },
-    {
-      title: "Web Ecosystems",
-      description: "Hyper-fast, SEO-optimized web applications designed for conversion and global scale.",
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>,
-      tags: ["Next.js", "TypeScript", "Node.js", "Tailwind"]
-    },
-    {
-      title: "AI Integration",
-      description: "Empower your business with custom LLM agents, computer vision, and predictive analytics.",
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
-      tags: ["Gemini API", "OpenAI", "PyTorch", "Automation"]
-    },
-    {
-      title: "Growth & SEO",
-      description: "Data-driven marketing strategies to propel your brand to the top of search results.",
-      icon: <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>,
-      tags: ["Keyword Research", "Link Building", "Analytics", "SMM"]
-    }
-  ];
-
   return (
     <section id="services" className="py-24 px-6 relative">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="max-w-xl"
+            className="max-w-2xl"
           >
-            <span className="text-cyan-400 font-bold uppercase tracking-widest text-xs mb-4 block">Our Core Arsenal</span>
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none">
-              Specialized <br/><span className="text-white/40">Digital Units</span>
+            <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[10px] mb-4 block">Core Arsenal</span>
+            <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-[0.8]">
+              Operational <br/><span className="text-white/20">Service Units</span>
             </h2>
           </motion.div>
           <motion.p 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-zinc-500 max-w-sm text-right hidden md:block"
+            className="text-zinc-500 max-w-sm text-right font-medium hidden md:block"
           >
-            We don't just build products; we build high-precision digital tools that drive business growth.
+            Bycom Solutions doesn't just build products; we engineer high-precision digital tools for business acceleration.
           </motion.p>
         </div>
         
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {servicesData.map((s, idx) => <ServiceCard key={idx} {...s} />)}
-        </motion.div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {servicesData.map((s, idx) => (
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              className="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-[#10b981]/50 group transition-all"
+            >
+              <div className="flex justify-between items-start mb-6">
+                <span className="text-4xl font-black text-white/10 group-hover:text-[#10b981] transition-colors">{s.num}</span>
+                <div className="w-10 h-10 rounded-xl bg-[#10b981]/10 flex items-center justify-center text-[#10b981] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </div>
+              </div>
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-2 leading-tight">{s.title}</h3>
+              <p className="text-[#10b981] text-[10px] font-bold uppercase tracking-widest mb-4">{s.subtitle}</p>
+              <p className="text-zinc-500 text-xs leading-relaxed mb-6 group-hover:text-zinc-300 transition-colors">{s.desc}</p>
+              <div className="flex flex-wrap gap-2">
+                {s.tags.map(tag => (
+                  <span key={tag} className="text-[8px] font-black uppercase tracking-widest px-2 py-1 rounded bg-white/5 border border-white/5">{tag}</span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
