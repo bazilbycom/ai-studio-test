@@ -87,8 +87,8 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         className="mt-32 w-full max-w-7xl glass-panel rounded-[3rem] overflow-hidden aspect-[21/9] relative group border border-white/5 shadow-2xl"
       >
         <img 
-          src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1600" 
-          alt="Neural Interface" 
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
+          alt="Beyond Computing Global View" 
           className="w-full h-full object-cover grayscale opacity-20 group-hover:grayscale-0 group-hover:opacity-60 transition-all duration-1000"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#020202] via-transparent to-transparent"></div>
