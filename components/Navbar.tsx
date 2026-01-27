@@ -18,7 +18,6 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
     { name: 'Services', href: '#services' },
     { name: 'Portfolio', href: '#portfolio' },
     { name: 'Intelligence', href: '#blog' },
-    { name: 'AI Architect', href: '#ai-architect' },
     { name: 'Contact', href: '#contact' },
   ];
 

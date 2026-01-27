@@ -1,8 +1,14 @@
 import { GoogleGenAI } from "@google/genai";
 
 export const getAIArchitectResponse = async (userPrompt: string, history: { role: 'user' | 'assistant', content: string }[]) => {
-  // Directly initialize using process.env.API_KEY as per instructions
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const apiKey = process.env.API_KEY;
+  
+  // Safety check: Return a graceful fallback if the API key is not effectively loaded
+  if (!apiKey || apiKey === "undefined" || apiKey.includes("your_api_key")) {
+    return "The Bycom Neural Uplink is currently in maintenance mode for public deployments. Please contact our engineering team via WhatsApp (https://wa.me/966575271327) for a direct architectural consultation.";
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   
   const systemInstruction = `
     You are the 'Bycom AI Architect'. Bycom Solutions is an elite digital engineering agency.
@@ -38,6 +44,7 @@ export const getAIArchitectResponse = async (userPrompt: string, history: { role
     return response.text || "Neural uplink disrupted. Please retry your request or reach out at contact@bycomsolutions.com.";
   } catch (error) {
     console.error("Gemini API Error:", error);
-    throw error; // Let the component handle UI error state
+    // Graceful fallback for API errors (quota, invalid key, etc)
+    return "Neural link timeout. For urgent architectural inquiries, please initiate an onboarding session via our WhatsApp relay: https://wa.me/966575271327";
   }
 };
