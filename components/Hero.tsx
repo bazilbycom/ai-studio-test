@@ -42,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-emerald-500/5 rounded-full blur-[220px]" />
       </div>
 
-      <div className="max-w-7xl relative z-10 w-full flex flex-col items-center justify-center text-center">
+      <div className="max-w-7xl relative z-10 w-full flex flex-col items-center justify-center text-center mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(4.5rem,10vw,12rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full"
+          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(4rem,9vw,10rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full max-w-[95vw] md:max-w-none mx-auto"
         >
           <span className="md:hidden block">
             <span className="block">Build</span>
@@ -64,7 +64,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             <span className="block">Limits</span>
           </span>
           <span className="hidden md:inline-block whitespace-nowrap">
-            Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow px-3">Beyond</span> Limits
+            Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow px-4">Beyond</span> Limits
           </span>
         </motion.h1>
         
