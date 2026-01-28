@@ -14,6 +14,26 @@ const spintax = [
   "Sub-ms Latency Engineering"
 ];
 
+const ShootingStar = ({ delay, top, left }: { delay: number, top: string, left: string }) => (
+  <motion.div
+    initial={{ x: "-100%", y: "0%", opacity: 0 }}
+    animate={{ 
+      x: ["0%", "350%"], 
+      y: ["0%", "250%"],
+      opacity: [0, 1, 0] 
+    }}
+    transition={{ 
+      duration: 3, 
+      repeat: Infinity, 
+      repeatDelay: Math.random() * 3 + 1,
+      delay,
+      ease: "linear"
+    }}
+    className="absolute w-[250px] h-[1px] bg-gradient-to-r from-transparent via-[#10b981] to-transparent z-0 rotate-[-25deg]"
+    style={{ top, left }}
+  />
+);
+
 const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   const [index, setIndex] = useState(0);
 
@@ -25,8 +45,19 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center overflow-hidden h-screen w-full px-4 md:px-12 bg-transparent">
-      {/* Background elements moved to GlobalBackground in App.tsx to unify layer management */}
+    <section className="relative flex items-center justify-center overflow-hidden h-screen w-full px-4 md:px-12">
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <ShootingStar delay={0} top="10%" left="5%" />
+        <ShootingStar delay={1.5} top="30%" left="15%" />
+        <ShootingStar delay={4} top="50%" left="2%" />
+        <ShootingStar delay={0.5} top="70%" left="20%" />
+        <ShootingStar delay={2.2} top="85%" left="10%" />
+        <ShootingStar delay={5} top="20%" left="25%" />
+        
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#10b981]/15 rounded-full blur-[160px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-[200px]" />
+      </div>
+
       <div className="max-w-screen-2xl relative z-10 w-full flex flex-col items-center justify-center text-center mx-auto px-4 md:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
