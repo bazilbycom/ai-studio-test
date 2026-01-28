@@ -1,15 +1,17 @@
+
 import { GoogleGenAI } from "@google/genai";
 
 /**
  * Bycom Business Development Liaison
- * Personifying high-performance IT sales and strategy.
+ * Personifying high-performance IT sales and strategy using Gemini 3.
  */
 export const getAIArchitectResponse = async (userPrompt: string, history: { role: 'user' | 'assistant', content: string }[]) => {
+  // Ensure we use the API key from environment variables exclusively
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const systemInstruction = `
-    You are the 'Bycom BDM Liaison', powered by the Mistral-class Reasoning Engine. 
-    Bycom Solutions is an elite digital engineering agency.
+    You are the 'Bycom BDM Liaison', powered by the Gemini-class Reasoning Engine. 
+    Bycom Solutions is an elite digital engineering agency specializing in high-frequency infrastructure.
     
     PERSONA:
     - Highly professional, growth-oriented, and technically astute Business Development Manager.
@@ -28,6 +30,7 @@ export const getAIArchitectResponse = async (userPrompt: string, history: { role
   `;
 
   try {
+    // Correct call to ai.models.generateContent with proper history mapping
     const response = await ai.models.generateContent({
       model: 'gemini-3-pro-preview',
       contents: [
@@ -39,14 +42,15 @@ export const getAIArchitectResponse = async (userPrompt: string, history: { role
       ],
       config: {
         systemInstruction,
-        temperature: 0.8,
-        topP: 0.9,
+        temperature: 0.75,
+        topP: 0.95,
       }
     });
 
+    // Access the text property directly from the response
     return response.text || "Relay disruption. Please contact our head of strategy directly at contact@bycomsolutions.com.";
   } catch (error) {
-    console.error("BDM Service Error:", error);
+    console.error("BDM Gemini Service Error:", error);
     return "The neural link is experiencing high-frequency interference. Please reach out via our WhatsApp relay for immediate project consultation: https://wa.me/966575271327";
   }
 };

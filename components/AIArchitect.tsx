@@ -1,7 +1,8 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
-import { getMistralResponse } from '../services/aiService';
+import { getAIArchitectResponse } from '../services/geminiService';
 import { Message } from '../types';
 
 const BDMManager: React.FC = () => {
@@ -28,8 +29,10 @@ const BDMManager: React.FC = () => {
     setIsLoading(true);
 
     try {
+      // Map history for Gemini API compliance
       const history = currentMessages.slice(0, -1) as { role: 'user' | 'assistant', content: string }[];
-      const response = await getMistralResponse(input, history);
+      // Using Gemini-powered BDM Liaison
+      const response = await getAIArchitectResponse(input, history);
       setMessages(prev => [...prev, { role: 'assistant', content: response }]);
     } catch (err) {
       console.error("BDM UI Error:", err);
@@ -52,7 +55,7 @@ const BDMManager: React.FC = () => {
              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#10b981]">Growth Strategist Active</span>
           </div>
           <h2 className="text-6xl md:text-8xl font-black mb-10 tracking-tighter uppercase leading-[0.85] text-white">
-            Mistral <br/><span className="text-white/20">Liaison</span>
+            Gemini <br/><span className="text-white/20">Liaison</span>
           </h2>
           <p className="text-zinc-200 text-xl md:text-2xl mb-12 leading-relaxed font-bold max-w-lg italic opacity-90">
             "Your digital legacy isn't an accident—it's engineered. Let's draft your next-gen growth strategy today."
@@ -63,8 +66,8 @@ const BDMManager: React.FC = () => {
               <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mt-2">Executive Lead</span>
             </div>
             <div className="px-8 py-5 glass-panel rounded-3xl border border-white/10 flex flex-col bg-gradient-to-br from-purple-500/10 to-transparent">
-              <span className="text-purple-400 font-black text-3xl">M-L3</span>
-              <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mt-2">Mistral Core</span>
+              <span className="text-purple-400 font-black text-3xl">G-V3</span>
+              <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mt-2">Gemini Core</span>
             </div>
           </div>
         </motion.div>

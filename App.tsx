@@ -14,63 +14,50 @@ import ServicePage from './components/ServicePage';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const GlobalBackground: React.FC = () => {
-  const stars = useMemo(() => [...Array(15)].map((_, i) => ({
-    id: i,
-    delay: Math.random() * 30,
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    duration: 1.5 + Math.random() * 2
-  })), []);
-
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Dynamic Gradient Flashes */}
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#020202]">
+      {/* Intense scanline overlay for CRT effect */}
+      <div className="absolute inset-0 z-50 pointer-events-none opacity-[0.04] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
+      
+      {/* Dynamic Global Energy Flashes - Primary Emerald */}
       <motion.div 
         animate={{ 
-          opacity: [0.05, 0.2, 0.05],
-          scale: [1, 1.4, 1],
-          x: ['-20%', '20%', '-20%'],
-          y: ['-10%', '10%', '-10%']
+          opacity: [0.05, 0.15, 0.05],
+          scale: [1, 1.2, 1],
+          x: ['-20%', '10%', '-20%'],
+          y: ['-10%', '15%', '-10%']
         }}
-        transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[-30%] left-[-30%] w-[100%] h-[100%] rounded-full bg-emerald-500/15 blur-[180px]"
-      />
-      <motion.div 
-        animate={{ 
-          opacity: [0.03, 0.15, 0.03],
-          scale: [1.3, 1, 1.3],
-          x: ['20%', '-20%', '20%'],
-          y: ['20%', '-20%', '20%']
-        }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-[-30%] right-[-30%] w-[90%] h-[90%] rounded-full bg-purple-500/10 blur-[180px]"
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[-20%] left-[-10%] w-[80%] h-[80%] rounded-full bg-emerald-500/20 blur-[160px]"
       />
 
-      {/* Global Shooting Stars */}
-      {stars.map((star) => (
-        <motion.div
-          key={star.id}
-          initial={{ x: "-100%", y: "-100%", opacity: 0 }}
-          animate={{ 
-            x: ["0%", "500%"], 
-            y: ["0%", "400%"],
-            opacity: [0, 1, 0] 
-          }}
-          transition={{ 
-            duration: star.duration, 
-            repeat: Infinity, 
-            repeatDelay: Math.random() * 10 + 5,
-            delay: star.delay,
-            ease: "linear"
-          }}
-          className="absolute w-[400px] h-[1px] bg-gradient-to-r from-transparent via-[#10b981] to-transparent z-0 rotate-[-30deg]"
-          style={{ top: star.top, left: star.left }}
-        />
-      ))}
+      {/* Dynamic Global Energy Flashes - Secondary Cyan */}
+      <motion.div 
+        animate={{ 
+          opacity: [0.03, 0.12, 0.03],
+          scale: [1.2, 0.9, 1.2],
+          x: ['20%', '-15%', '20%'],
+          y: ['10%', '-10%', '10%']
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[-10%] right-[-10%] w-[70%] h-[70%] rounded-full bg-cyan-400/10 blur-[180px]"
+      />
+
+      {/* Center Pulse Flash */}
+      <motion.div 
+        animate={{ 
+          opacity: [0.02, 0.08, 0.02],
+          scale: [0.8, 1.1, 0.8],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-emerald-500/5 blur-[200px]"
+      />
 
       {/* Interactive Mouse Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(16,185,129,0.08),transparent_40%)]" />
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]" />
+      
+      {/* Global Texture Layer */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03] mix-blend-overlay" />
     </div>
   );
 };
@@ -137,7 +124,7 @@ const App: React.FC = () => {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.5, ease: "linear" }
+    transition: { duration: 0.5, ease: "linear" as const }
   };
 
   const renderHomeContent = () => (

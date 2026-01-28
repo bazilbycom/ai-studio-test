@@ -24,7 +24,13 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[60] flex justify-center p-6">
       <div className="glass-panel px-6 md:px-8 py-3 rounded-full flex items-center justify-between w-full max-w-6xl relative z-[70]">
-        <Logo className="h-10" />
+        <div className="flex items-center gap-6">
+          <Logo className="h-10" />
+          <div className="hidden lg:flex items-center gap-3 pl-6 border-l border-white/10">
+            <div className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-pulse"></div>
+            <span className="text-[8px] font-black uppercase tracking-[0.4em] text-[#10b981] whitespace-nowrap">Uplink: Optimal</span>
+          </div>
+        </div>
         
         <div className="hidden md:flex items-center gap-8 text-[11px] font-black tracking-widest uppercase">
           {navLinks.map(link => (
