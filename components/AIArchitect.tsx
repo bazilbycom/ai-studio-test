@@ -8,7 +8,7 @@ const BDMManager: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'assistant', 
-      content: "Protocol active. I am your **Bycom Strategic Liaison**.\n\nReady to discuss your enterprise vision. How can we accelerate your digital roadmap today?\n\n- Scale Infrastructure\n- AI Workflow Design\n- Custom Fintech Engines" 
+      content: "Uplink verified. I am your **Bycom Strategic Liaison**.\n\nReady to analyze your technical requirements and draft a deployment roadmap.\n\n- Infrastructure Scale\n- Neural Workflow Design\n- Custom Fintech Engines" 
     }
   ]);
   const [input, setInput] = useState('');
@@ -42,7 +42,7 @@ const BDMManager: React.FC = () => {
       setMessages(prev => [...prev, { role: 'assistant', content: response }]);
     } catch (err) {
       console.error("BDM UI Error:", err);
-      setMessages(prev => [...prev, { role: 'assistant', content: "Neural relay disrupted. Please reach out via WhatsApp for immediate support: https://wa.me/966575271327" }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: "Neural relay failure. Please contact strategy@bycomsolutions.com or initiate direct WhatsApp onboarding: https://wa.me/966575271327" }]);
     } finally {
       setIsLoading(false);
     }
@@ -58,18 +58,18 @@ const BDMManager: React.FC = () => {
         >
           <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-[#10b981]/30 bg-[#10b981]/5 mb-8">
              <div className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_8px_#10b981]"></div>
-             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#10b981]">Liaison Core Active</span>
+             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#10b981]">Liaison Uplink Active</span>
           </div>
           <h2 className="text-6xl md:text-8xl font-black mb-10 tracking-tighter uppercase leading-[0.85] text-white">
             Mistral <br/><span className="text-white/20">Liaison</span>
           </h2>
           <p className="text-zinc-400 text-xl md:text-2xl mb-12 leading-relaxed font-bold max-w-lg italic opacity-90">
-            "We don't just build code—we engineer outcomes. Let's draft your next strategic move."
+            "We don't just build code—we engineer outcomes. Engage the Liaison to draft your next digital asset."
           </p>
           <div className="flex flex-wrap gap-4">
-            <div className="px-8 py-5 glass-panel rounded-3xl border border-white/10 flex flex-col">
-              <span className="text-[#10b981] font-black text-3xl">L-01</span>
-              <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mt-2">Relay Node</span>
+            <div className="px-8 py-5 glass-panel rounded-[2rem] border border-white/10 flex flex-col bg-emerald-500/5">
+              <span className="text-[#10b981] font-black text-3xl">RELAY</span>
+              <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mt-2">Node Node-01</span>
             </div>
           </div>
         </motion.div>
@@ -78,14 +78,14 @@ const BDMManager: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="glass-panel rounded-[3rem] h-[650px] flex flex-col overflow-hidden border border-white/20 shadow-2xl bg-[#0a0a0c]/80"
+          className="glass-panel rounded-[3.5rem] h-[650px] flex flex-col overflow-hidden border border-white/20 shadow-2xl bg-black/60"
         >
           <div className="bg-white/5 p-6 border-b border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-2.5 h-2.5 bg-[#10b981] rounded-full animate-pulse"></div>
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-zinc-300">SECURE UPLINK // BDM</span>
+              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-zinc-300">SECURE TERMINAL</span>
             </div>
-            <div className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Mistral Large 2</div>
+            <div className="text-[9px] font-black text-zinc-600 uppercase tracking-widest">Mistral Large V2.1</div>
           </div>
 
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-8 space-y-8 scrollbar-hide">
@@ -100,7 +100,7 @@ const BDMManager: React.FC = () => {
                   <div className={`max-w-[85%] px-6 py-4 rounded-[1.8rem] text-sm md:text-base shadow-xl ${
                     m.role === 'user' 
                       ? 'bg-[#10b981] text-black font-black' 
-                      : 'bg-white/5 border border-white/10 text-zinc-200'
+                      : 'bg-white/5 border border-white/10 text-zinc-200 font-semibold'
                   }`}>
                     {m.role === 'assistant' ? (
                       <div className="prose prose-invert prose-sm max-w-none prose-p:leading-relaxed prose-strong:text-[#10b981] prose-a:text-[#10b981] prose-a:font-black">
@@ -132,12 +132,12 @@ const BDMManager: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Message Liaison..."
-                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-base focus:outline-none focus:border-[#10b981] transition-all pr-16 text-white placeholder:text-zinc-600 font-bold"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-base focus:outline-none focus:border-[#10b981] transition-all pr-16 text-white placeholder:text-zinc-700 font-bold"
               />
               <button 
                 onClick={handleSend}
                 disabled={isLoading}
-                className="absolute right-2 top-2 h-12 w-12 bg-[#10b981] rounded-xl flex items-center justify-center text-black hover:bg-white transition-all disabled:opacity-50"
+                className="absolute right-2 top-2 h-12 w-12 bg-[#10b981] rounded-xl flex items-center justify-center text-black hover:bg-white transition-all disabled:opacity-50 shadow-xl"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </button>

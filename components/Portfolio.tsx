@@ -5,14 +5,14 @@ const projects = [
   {
     title: "NeuroX Exchange",
     category: "Fintech // Trading",
-    desc: "A high-frequency crypto asset exchange with sub-10ms order execution and institutional grade security.",
-    image: "https://images.unsplash.com/photo-1633156189757-4f49390972b0?auto=format&fit=crop&q=80&w=1600", // Fixed image link
+    desc: "A high-frequency crypto asset exchange with sub-10ms order execution and institutional grade security layers.",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop",
     grad: "from-emerald-500/10"
   },
   {
     title: "Aura Intelligence",
     category: "AI // Enterprise",
-    desc: "Neural network layer for automated enterprise workflow optimization and real-time decisioning.",
+    desc: "Neural network layer for automated enterprise workflow optimization and real-time decisioning engines.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1600",
     grad: "from-purple-500/10"
   },
@@ -44,7 +44,7 @@ const Portfolio: React.FC = () => {
             </h2>
           </motion.div>
           <motion.p initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-zinc-400 max-w-sm font-medium text-lg leading-relaxed opacity-80">
-            Case studies of high-frequency digital assets deployed across global enterprise networks.
+            Deployed case studies of high-frequency digital assets serving global enterprise networks.
           </motion.p>
         </div>
 
@@ -57,7 +57,7 @@ const Portfolio: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              className={`glass-panel rounded-[2.5rem] overflow-hidden relative group bg-gradient-to-br ${project.grad} to-transparent border-white/10`}
+              className={`glass-panel rounded-[3rem] overflow-hidden relative group bg-gradient-to-br ${project.grad} to-transparent border-white/10`}
             >
               <div className="aspect-[16/9] overflow-hidden relative">
                 <img 
@@ -65,14 +65,14 @@ const Portfolio: React.FC = () => {
                   alt={project.title} 
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
               </div>
-              <div className="p-8 md:p-12">
+              <div className="p-10 md:p-12">
                 <span className="text-[#10b981] font-bold text-[10px] uppercase tracking-[0.4em] mb-4 block">{project.category}</span>
                 <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tighter mb-4 text-white group-hover:text-[#10b981] transition-colors">{project.title}</h3>
-                <p className="text-zinc-400 text-base md:text-lg font-medium mb-10 leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">{project.desc}</p>
-                <button className="flex items-center gap-3 text-white font-bold uppercase tracking-widest text-[10px] group-hover:translate-x-3 transition-transform">
-                  Decipher Data
+                <p className="text-zinc-400 text-base md:text-lg font-medium mb-10 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">{project.desc}</p>
+                <button className="flex items-center gap-3 text-white font-black uppercase tracking-widest text-[10px] group-hover:translate-x-3 transition-transform">
+                  Access Data Node
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </button>
               </div>
