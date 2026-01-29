@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,12 +24,18 @@
         :root {
             --emerald: #10b981;
         }
+        html {
+            /* Prevent hardware acceleration glitches on scroll */
+            scroll-behavior: auto !important;
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #020202;
             color: #ffffff;
             margin: 0;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         /* Critical Preloader (FCP Fix) */
         #preloader {
@@ -73,6 +78,17 @@
         }
         .animate-marquee {
             animation: marquee 20s linear infinite;
+        }
+        /* Custom Scrollbar for better performance */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020202;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
         }
     </style>
 <script type="importmap">

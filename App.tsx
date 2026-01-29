@@ -85,12 +85,15 @@ const App: React.FC = () => {
       setActiveSection(hash);
     }
     
-    const targetElement = document.getElementById(hash);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    } else if (!hash.includes('/')) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    // Delayed scroll to avoid conflict with AnimatePresence height transitions
+    requestAnimationFrame(() => {
+      const targetElement = document.getElementById(hash);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (!hash.includes('/')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -124,60 +127,66 @@ const App: React.FC = () => {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
     exit: { opacity: 0 },
-    transition: { duration: 0.5, ease: "linear" as const }
+    transition: { duration: 0.3, ease: "easeInOut" }
   };
 
   const renderHomeContent = () => (
     <>
       <Hero onOpenModal={() => setIsModalOpen(true)} />
       
-      <section className="py-12 md:h-screen md:max-h-[850px] flex flex-col items-center justify-center bg-transparent relative overflow-hidden">
-         <div className="max-w-7xl mx-auto w-full px-6 flex flex-col gap-6 md:gap-10 h-full justify-center">
+      <section className="py-12 md:py-24 flex flex-col items-center justify-center bg-transparent relative overflow-hidden min-h-[600px]">
+         <div className="max-w-7xl mx-auto w-full px-6 flex flex-col gap-8 md:gap-10">
            <motion.div 
-             initial={{ opacity: 0, scale: 0.98 }}
-             whileInView={{ opacity: 1, scale: 1 }}
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="w-full glass-panel rounded-[2rem] md:rounded-[3rem] overflow-hidden aspect-[16/10] md:aspect-[21/8] relative border border-white/20 shadow-[0_0_120px_rgba(16,185,129,0.3)]"
+             className="w-full glass-panel rounded-[2rem] md:rounded-[3.5rem] overflow-hidden relative border border-white/20 shadow-[0_0_120px_rgba(16,185,129,0.15)] bg-black/40"
            >
-             <motion.img 
-               src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
-               alt="Global Status" 
-               loading="lazy"
-               className="w-full h-full object-cover"
-               animate={{ opacity: [0.4, 0.8, 0.4] }}
-               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-             />
-             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-             <div className="absolute inset-0 p-6 md:p-14 flex flex-col justify-end">
-               <div className="grid grid-cols-3 gap-3 md:gap-10 items-end">
-                 <div className="text-left col-span-3 md:col-span-1 mb-4 md:mb-0">
-                   <span className="text-[#10b981] font-black text-[8px] md:text-[10px] uppercase tracking-[0.6em] mb-3 block">Network Nodes</span>
-                   <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none text-white drop-shadow-2xl">Global Status</h3>
-                   <div className="flex items-center gap-3 mt-6">
-                     <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></div>
-                     <span className="text-[10px] font-black uppercase text-white tracking-[0.3em]">Active Relay</span>
+             <div className="relative aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/8]">
+               <motion.img 
+                 src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600" 
+                 alt="Global Status" 
+                 loading="lazy"
+                 className="w-full h-full object-cover"
+                 animate={{ opacity: [0.4, 0.6, 0.4] }}
+                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+               
+               <div className="absolute inset-0 p-8 md:p-14 flex flex-col justify-end">
+                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-end">
+                   <div className="text-left">
+                     <span className="text-[#10b981] font-black text-[10px] uppercase tracking-[0.6em] mb-4 block">Network Nodes</span>
+                     <h3 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-none text-white drop-shadow-2xl">Global Status</h3>
+                     <div className="flex items-center gap-3 mt-6">
+                       <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></div>
+                       <span className="text-[10px] font-black uppercase text-white/80 tracking-[0.3em]">Active Relay</span>
+                     </div>
                    </div>
-                 </div>
-                 <div className="text-left border-l border-white/20 pl-4 md:pl-12">
-                   <span className="text-purple-400 font-black text-[8px] md:text-[10px] uppercase tracking-[0.6em] mb-2 block">Speed</span>
-                   <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-none text-white">&lt; 15ms</h3>
-                   <p className="text-zinc-300 text-[8px] md:text-[10px] font-black uppercase tracking-widest mt-1">Latency</p>
-                 </div>
-                 <div className="text-left border-l border-white/20 pl-4 md:pl-12">
-                   <span className="text-cyan-400 font-black text-[8px] md:text-[10px] uppercase tracking-[0.6em] mb-2 block">Nodes</span>
-                   <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tighter leading-none text-white">450+</h3>
-                   <p className="text-zinc-300 text-[8px] md:text-[10px] font-black uppercase tracking-widest mt-1">Uplinks</p>
+                   
+                   <div className="flex gap-10 md:gap-12 col-span-1 md:col-span-2">
+                     <div className="text-left border-l border-[#10b981]/40 pl-6 md:pl-10">
+                       <span className="text-purple-400 font-black text-[10px] uppercase tracking-[0.6em] mb-2 block">Speed</span>
+                       <h3 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none text-white">&lt; 15ms</h3>
+                       <p className="text-zinc-400 text-[10px] font-black uppercase tracking-widest mt-2">Global Latency</p>
+                     </div>
+                     <div className="text-left border-l border-cyan-400/40 pl-6 md:pl-10">
+                       <span className="text-cyan-400 font-black text-[10px] uppercase tracking-[0.6em] mb-2 block">Nodes</span>
+                       <h3 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none text-white">450+</h3>
+                       <p className="text-zinc-400 text-[10px] font-black uppercase tracking-widest mt-2">Active Uplinks</p>
+                     </div>
+                   </div>
                  </div>
                </div>
              </div>
            </motion.div>
 
-           <div className="w-full md:border-y border-white/10 md:bg-white/[0.04] md:rounded-3xl py-10 md:py-14 overflow-hidden shadow-2xl">
+           <div className="w-full md:border-y border-white/10 md:bg-white/[0.02] md:rounded-3xl py-8 md:py-14 overflow-hidden">
               <div className="flex animate-marquee whitespace-nowrap">
                 {[...marqueeContent, ...marqueeContent].map((text, i) => (
                   <div key={i} className="flex items-center gap-16 md:gap-32 mx-10 md:mx-24">
-                    <span className="text-2xl md:text-4xl font-black text-white/90 uppercase tracking-tighter">{text}</span>
-                    <span className="w-3 h-3 bg-[#10b981] rounded-full opacity-100 shadow-[0_0_12px_#10b981]"></span>
+                    <span className="text-xl md:text-4xl font-black text-white/80 uppercase tracking-tighter">{text}</span>
+                    <span className="w-2.5 h-2.5 bg-[#10b981] rounded-full shadow-[0_0_15px_#10b981]"></span>
                   </div>
                 ))}
               </div>
@@ -241,35 +250,35 @@ const App: React.FC = () => {
           ) : activeSection === 'contact' ? (
             <motion.div key="contact" {...pageTransition} className="pt-48 pb-32 px-6">
               <div className="max-w-7xl mx-auto">
-                <div className="grid lg:grid-cols-2 gap-32">
+                <div className="grid lg:grid-cols-2 gap-20 md:gap-32">
                   <div className="flex flex-col justify-center">
                     <span className="text-[#10b981] font-black uppercase tracking-[0.5em] text-[11px] mb-8 block">Regional Hubs</span>
                     <h1 className="text-6xl md:text-[11rem] font-black uppercase tracking-tighter mb-16 leading-[0.8]">Global <br/><span className="text-white/20">Presence</span></h1>
                     <div className="space-y-12">
-                      <div className="glass-panel p-12 rounded-[3rem] border border-white/10 relative group overflow-hidden bg-gradient-to-r from-emerald-500/10 to-transparent shadow-2xl">
+                      <div className="glass-panel p-10 md:p-12 rounded-[3rem] border border-white/10 relative group overflow-hidden bg-gradient-to-r from-emerald-500/10 to-transparent shadow-2xl">
                         <div className="relative z-10">
                           <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#10b981] mb-6 block">India Node</span>
-                          <p className="font-black text-3xl text-white mb-3">Bantwal Chambers</p>
-                          <p className="text-zinc-300 font-bold italic text-lg tracking-tight mb-8 opacity-80">Mangalore, KA 575011</p>
+                          <p className="font-black text-2xl md:text-3xl text-white mb-3">Bantwal Chambers</p>
+                          <p className="text-zinc-300 font-bold italic text-base md:text-lg tracking-tight mb-8 opacity-80">Mangalore, KA 575011</p>
                           <div className="px-8 py-4 bg-white/10 rounded-2xl border border-white/20 inline-block text-[14px] font-black text-white shadow-inner">+91 72598 30339</div>
                         </div>
                       </div>
-                      <div className="glass-panel p-12 rounded-[3rem] border border-white/10 relative group overflow-hidden bg-gradient-to-r from-cyan-500/10 to-transparent shadow-2xl">
+                      <div className="glass-panel p-10 md:p-12 rounded-[3rem] border border-white/10 relative group overflow-hidden bg-gradient-to-r from-cyan-500/10 to-transparent shadow-2xl">
                         <div className="relative z-10">
                           <span className="text-[11px] font-black uppercase tracking-[0.4em] text-[#06b6d4] mb-6 block">KSA Node</span>
-                          <p className="font-black text-3xl text-white mb-3">Tahliyah St, Riyadh</p>
-                          <p className="text-zinc-300 font-bold italic text-lg tracking-tight mb-8 opacity-80">Al Aqiq 13515</p>
+                          <p className="font-black text-2xl md:text-3xl text-white mb-3">Tahliyah St, Riyadh</p>
+                          <p className="text-zinc-300 font-bold italic text-base md:text-lg tracking-tight mb-8 opacity-80">Al Aqiq 13515</p>
                           <div className="px-8 py-4 bg-white/10 rounded-2xl border border-white/20 inline-block text-[14px] font-black text-white shadow-inner">+966 57 527 1327</div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="glass-panel p-16 md:p-24 rounded-[5rem] border border-white/10 flex flex-col items-center justify-center text-center bg-gradient-to-b from-white/[0.05] to-transparent shadow-[0_50px_100px_rgba(0,0,0,0.8)]">
-                    <h3 className="text-5xl md:text-6xl font-black uppercase tracking-tighter mb-10 text-white leading-none">Project Enquiry</h3>
-                    <p className="text-zinc-200 font-bold text-2xl mb-16 max-w-sm leading-relaxed opacity-90">Ready to deploy your next high-performance asset?</p>
-                    <button onClick={() => setIsModalOpen(true)} className="w-full max-w-sm py-8 bg-[#10b981] text-black font-black uppercase tracking-[0.5em] rounded-[2.5rem] hover:bg-white hover:scale-105 active:scale-95 transition-all text-2xl shadow-[0_30px_80px_rgba(16,185,129,0.4)]">Submit Enquiry</button>
-                    <div className="mt-20 pt-16 border-t border-white/10 w-full">
-                      <p className="font-black text-3xl text-white tracking-tighter italic drop-shadow-lg">sayhello@bycomsolutions.com</p>
+                  <div className="glass-panel p-12 md:p-24 rounded-[4rem] border border-white/10 flex flex-col items-center justify-center text-center bg-gradient-to-b from-white/[0.05] to-transparent shadow-[0_50px_100px_rgba(0,0,0,0.8)]">
+                    <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-10 text-white leading-none">Project Enquiry</h3>
+                    <p className="text-zinc-200 font-bold text-xl md:text-2xl mb-16 max-w-sm leading-relaxed opacity-90">Ready to deploy your next high-performance asset?</p>
+                    <button onClick={() => setIsModalOpen(true)} className="w-full max-w-sm py-6 md:py-8 bg-[#10b981] text-black font-black uppercase tracking-[0.5em] rounded-[2rem] hover:bg-white hover:scale-105 active:scale-95 transition-all text-xl md:text-2xl shadow-[0_30px_80px_rgba(16,185,129,0.4)]">Submit Enquiry</button>
+                    <div className="mt-16 pt-12 border-t border-white/10 w-full">
+                      <p className="font-black text-2xl md:text-3xl text-white tracking-tighter italic drop-shadow-lg">sayhello@bycomsolutions.com</p>
                     </div>
                   </div>
                 </div>
