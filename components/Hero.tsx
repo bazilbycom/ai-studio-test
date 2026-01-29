@@ -20,50 +20,82 @@ const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % spintax.length);
-    }, 4000);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <section className="relative flex items-center justify-center h-[90vh] md:h-screen w-full px-6 bg-transparent">
-      <div className="max-w-6xl relative z-10 w-full flex flex-col items-center justify-center text-center">
-        <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/5 glass-panel mb-8 text-[10px] font-black tracking-[0.3em] uppercase text-[#10b981]">
-          <span className="w-1.5 h-1.5 bg-[#10b981] rounded-full"></span>
+    <section className="relative flex items-center justify-center overflow-hidden h-screen w-full px-4 md:px-12 bg-transparent">
+      {/* Local Background Ambience */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#10b981]/15 rounded-full blur-[160px] animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-purple-500/10 rounded-full blur-[200px]" />
+      </div>
+
+      <div className="max-w-screen-2xl relative z-10 w-full flex flex-col items-center justify-center text-center mx-auto px-4 md:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-[#10b981]/20 glass-panel mt-12 md:mt-0 mb-10 text-[10px] md:text-[12px] font-black tracking-[0.4em] uppercase text-[#10b981] min-w-[280px] justify-center"
+        >
+          <span className="w-2 h-2 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_12px_#10b981]"></span>
           <AnimatePresence mode="wait">
             <motion.span
               key={index}
-              initial={{ opacity: 0, y: 3 }}
+              initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -3 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, y: -5 }}
+              transition={{ duration: 0.5 }}
             >
               {spintax[index]}
             </motion.span>
           </AnimatePresence>
-        </div>
+        </motion.div>
         
-        <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black mb-6 leading-[0.9] tracking-tighter uppercase text-center text-white">
-          Build <span className="text-[#10b981]">Beyond</span> Limits
-        </h1>
+        <motion.h1 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-[14vw] sm:text-7xl md:text-8xl lg:text-[clamp(3rem,8vw,8.5rem)] font-black mb-8 leading-[0.85] tracking-tighter uppercase text-center w-full mx-auto text-white"
+        >
+          <span className="md:hidden block">
+            <span className="block">Build</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow py-2">Beyond</span>
+            <span className="block">Limits</span>
+          </span>
+          <span className="hidden md:inline-block whitespace-nowrap">
+            Build <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] via-[#34d399] to-[#06b6d4] text-glow px-2">Beyond</span> Limits
+          </span>
+        </motion.h1>
         
-        <p className="text-lg md:text-2xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed font-medium">
-          Bycom Solutions constructs <span className="text-white font-bold">ultra-performant</span> digital infrastructure and AI ecosystems for industry leaders.
-        </p>
+        <motion.p 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="text-[14px] sm:text-lg md:text-2xl text-zinc-200 mb-12 max-w-2xl mx-auto leading-relaxed font-semibold px-4 drop-shadow-lg"
+        >
+          Bycom Solutions constructs <span className="text-[#10b981] font-black">ultra-performant</span> digital infrastructure and AI ecosystems for industry leaders.
+        </motion.p>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-[280px] sm:max-w-none mb-12"
+        >
           <button 
             onClick={onOpenModal}
-            className="w-full sm:w-auto px-10 py-4 bg-[#10b981] text-black font-black uppercase tracking-[0.2em] rounded-xl hover:bg-white transition-all shadow-lg text-[11px]"
+            className="w-full sm:w-auto px-10 py-4 md:px-14 md:py-5 bg-[#10b981] text-black font-black uppercase tracking-[0.25em] rounded-2xl hover:bg-white hover:scale-105 transition-all shadow-2xl text-[10px] md:text-[11px]"
           >
             Consult Architect
           </button>
           <a 
             href="#portfolio" 
-            className="w-full sm:w-auto px-10 py-4 border border-white/10 glass-panel font-black uppercase tracking-[0.2em] rounded-xl hover:border-white transition-all text-[11px] text-white"
+            className="w-full sm:w-auto px-10 py-4 md:px-14 md:py-5 border border-white/10 glass-panel font-black uppercase tracking-[0.25em] rounded-2xl hover:border-[#10b981] transition-all text-[10px] md:text-[11px] text-white"
           >
             View Portfolio
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
