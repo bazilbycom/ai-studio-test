@@ -6,7 +6,7 @@ const projects = [
     title: "NeuroX Exchange",
     category: "Fintech // Trading",
     desc: "A high-frequency crypto asset exchange with sub-10ms order execution.",
-    image: "https://images.unsplash.com/photo-1642104704074-907c0698bcd9?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1611974714658-99d31130954b?auto=format&fit=crop&q=80&w=800",
     grad: "from-emerald-500/20"
   },
   {
